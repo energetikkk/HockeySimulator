@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2020/04/06 11:05:09.978,=C:\Users\Aliaksandr\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2020/04/06 11:05:10.354,=C:\Users\Aliaksandr\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>2020/04/06 11:05:31.948,E:\New folder\MainFrame.h=C:\Users\Aliaksandr\Documents\Embarcadero\Studio\Projects\Unit1.h</Transaction>
+    <Transaction>2020/04/06 11:05:31.948,E:\New folder\MainFrame.cpp=C:\Users\Aliaksandr\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>2020/04/06 11:05:31.948,E:\New folder\MainFrame.dfm=C:\Users\Aliaksandr\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2020/04/06 11:06:11.213,E:\New folder\HockeySimulatorPCH1.h=C:\Users\Aliaksandr\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2020/04/06 11:06:21.760,E:\New folder\HockeySimulator.cbproj=C:\Users\Aliaksandr\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+  </Transactions>
+</BorlandProject>

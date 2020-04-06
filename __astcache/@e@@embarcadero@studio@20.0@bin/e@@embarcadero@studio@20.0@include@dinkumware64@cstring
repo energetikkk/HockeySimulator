@@ -1,0 +1,55 @@
+// cstring standard header
+#ifndef _CSTRING_
+#define _CSTRING_
+#include <yvals.h>
+
+#ifdef _STD_USING
+ #undef _STD_USING
+  #include <string.h>
+ #define _STD_USING
+
+#else /* _STD_USING */
+ #include <string.h>
+#endif /* _STD_USING */
+
+ #if _IS_GHS
+
+ #if defined(__GHS_PRAGMAS)
+  #pragma ghs start_cxx_lib_header
+  #pragma ghs startdata
+ #endif /* defined(__GHS_PRAGMAS) */
+
+ #if defined(__ghs_max_pack_value)
+  #pragma pack (push, __ghs_max_pack_value)
+ #endif /* defined(__ghs_max_pack_value) */
+
+ #endif /* _IS_GHS */
+
+ #ifdef _GLOBAL_USING
+_STD_BEGIN
+using _CSTD size_t; using _CSTD memchr; using _CSTD memcmp;
+using _CSTD memcpy; using _CSTD memmove; using _CSTD memset;
+using _CSTD strcat; using _CSTD strchr; using _CSTD strcmp;
+using _CSTD strcoll; using _CSTD strcpy; using _CSTD strcspn;
+using _CSTD strerror; using _CSTD strlen; using _CSTD strncat;
+using _CSTD strncmp; using _CSTD strncpy; using _CSTD strpbrk;
+using _CSTD strrchr; using _CSTD strspn; using _CSTD strstr;
+using _CSTD strtok; using _CSTD strxfrm;
+
+ #if defined(__ghs_max_pack_value)
+  #pragma pack(pop)
+ #endif /* defined(__ghs_max_pack_value) */
+
+ #if defined(__GHS_PRAGMAS)
+  #pragma ghs enddata
+  #pragma ghs end_cxx_lib_header
+ #endif /* defined(__GHS_PRAGMAS) */
+_STD_END
+ #endif /* _GLOBAL_USING */
+
+#endif /* _CSTRING_ */
+
+/*
+ * Copyright (c) by P.J. Plauger. All rights reserved.
+ * Consult your license regarding permissions and restrictions.
+V8.03a/17:1422 */
