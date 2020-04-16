@@ -130,13 +130,16 @@
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="HockeySimulator.cpp">
+            <VirtualFolder>{AAE5AB75-5277-44D1-97C8-0519464A5CCD}</VirtualFolder>
             <BuildOrder>0</BuildOrder>
         </CppCompile>
         <PCHCompile Include="HockeySimulatorPCH1.h">
+            <VirtualFolder>{AAE5AB75-5277-44D1-97C8-0519464A5CCD}</VirtualFolder>
             <BuildOrder>1</BuildOrder>
             <PCH>true</PCH>
         </PCHCompile>
         <CppCompile Include="MainFrame.cpp">
+            <VirtualFolder>{A314AEA6-D7AE-4446-8B94-2710FD0FEEAE}</VirtualFolder>
             <Form>Form1</Form>
             <FormType>dfm</FormType>
             <DependentOn>MainFrame.h</DependentOn>
@@ -169,6 +172,14 @@
                 <Source>
                     <Source Name="MainSource">HockeySimulator.cpp</Source>
                 </Source>
+                <Folders/>
+                <VFOLDERS>
+                    <VFOLDER ID="{04B8677E-6874-4B0C-B524-2D8AF3F1C749}" name="resources"/>
+                    <VFOLDER ID="{AAE5AB75-5277-44D1-97C8-0519464A5CCD}" name="src">
+                        <VFOLDER ID="{4D597542-91AD-4ACD-AD8F-DF4A27B20DD1}" name="classes"/>
+                        <VFOLDER ID="{A314AEA6-D7AE-4446-8B94-2710FD0FEEAE}" name="frames"/>
+                    </VFOLDER>
+                </VFOLDERS>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="3">
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32c260.dll" Class="DependencyModule">
