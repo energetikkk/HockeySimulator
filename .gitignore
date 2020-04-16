@@ -33,3 +33,7 @@
 
 # Other
 __recover*
+__history
+Win32
+*.res
+
