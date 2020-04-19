@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <VirtualFolder ID="{AAE5AB75-5277-44D1-97C8-0519464A5CCD}"/>
+    <VirtualFolder ID="{4D597542-91AD-4ACD-AD8F-DF4A27B20DD1}"/>
+    <VirtualFolder ID="{A314AEA6-D7AE-4446-8B94-2710FD0FEEAE}"/>
+    <File Path="MainFrame.cpp"/>
+    <File Path="MainFrame.cpp"/>
+    <File Path="MainFrame.dfm"/>
+    <File Path="MainFrame.h"/>
+    <File Path="HockeySimulator.cpp"/>
+    <File Path="HockeySimulatorPCH1.h"/>
+    <VirtualFolder ID="{04B8677E-6874-4B0C-B524-2D8AF3F1C749}"/>
+  </ProjectSortOrder>
+</BorlandProject>
