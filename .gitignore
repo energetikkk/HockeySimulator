@@ -36,4 +36,5 @@ __recover*
 __history
 Win32
 *.res
+__astcache
 
