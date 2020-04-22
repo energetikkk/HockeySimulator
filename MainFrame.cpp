@@ -7,10 +7,13 @@
 // ---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
+#include "Simulator.h"
 TForm1 *Form1;
 
 // ---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
+	Simulator simulator{};
+	simulator.init_experiment();
 }
 
 // ---------------------------------------------------------------------------

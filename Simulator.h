@@ -9,11 +9,12 @@ class Simulator{
 		void start_experiment();
 		void pause_experiment();
 		void reset_experiment();
+		Simulator();
 	private:
 		boolean stick_hit;
 		//Stick *active_stick;
 		boolean is_running;
 
-		void validate_sticl_quee();
+		void validate_stick_quee();
 		void iteration();
 };

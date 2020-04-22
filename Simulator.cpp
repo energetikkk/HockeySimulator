@@ -1,39 +1,37 @@
-class Simulator{
-	double delta_t = 0.01;
-	boolean stick_hit = false;
-	Stick *active_stick;
-	boolean is_running = false;
-	public:
-	void start_experiment();
-	void pause_experiment();
-	void reset_experiment();
-	private:
-	void init_experiment();
-	void validate_sticl_quee();
-	void iteration();
-};
+#include "Simulator.h"
 
-void start_experiment(){
-	this.is_running = true;
-	while(this.is_running){
-		//Simulate
-	}
-}
-
-void pause_experiment(){
-	this.is_running = false;
-}
-
-void reset_experiment(){
-	this.is_running = false;
+Simulator::Simulator(){
 	init_experiment();
 }
 
-void init_experiment(){
+void Simulator::start_experiment(){
+	is_running = true;
+	while(is_running){
+		iteration();
+	}
 }
 
-void validate_sticl_quee(){
+void Simulator::pause_experiment(){
+	is_running = false;
 }
 
-void iteration(){
+void Simulator::reset_experiment(){
+	is_running = false;
+	init_experiment();
+}
+
+void Simulator::init_experiment(){
+	delta_t = 0.01; //in seconds
+	current_time = 0.0;
+	stick_hit = false;
+	//active_stick = null;
+	is_running = false;
+}
+
+void Simulator::validate_stick_quee(){
+}
+
+void Simulator::iteration(){
+	Sleep(delta_t * 1000);
+	current_time += delta_t;
 }

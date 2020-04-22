@@ -4484,7 +4484,7 @@ object Form1: TForm1
   end
   object Label1: TLabel
     Left = 248
-    Top = 112
+    Top = 110
     Width = 43
     Height = 13
     Caption = 'Value +1'
@@ -10687,10 +10687,10 @@ object Form1: TForm1
     Caption = 'Hockey stick rotation angle'
   end
   object Image3: TImage
-    Left = 496
-    Top = 102
-    Width = 33
-    Height = 28
+    Left = 504
+    Top = 105
+    Width = 25
+    Height = 23
     Picture.Data = {
       0954506E67496D61676589504E470D0A1A0A0000000D49484452000004000000
       035A080600000017AF3E9C000000097048597300000B1300000B1301009A9C18
