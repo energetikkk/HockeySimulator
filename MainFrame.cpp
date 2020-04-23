@@ -7,10 +7,13 @@
 // ---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
+#include "Simulator.h"
 TForm1 *Form1;
+Simulator *simulator;
 
 // ---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
+	simulator = new Simulator();
 }
 
 // ---------------------------------------------------------------------------
@@ -37,3 +40,9 @@ void __fastcall TForm1::Button3Click(TObject *Sender) {
 	Image2->Picture->LoadFromFile(picture_path);
 }
 // ---------------------------------------------------------------------------
+void __fastcall TForm1::stop_buttonClick(TObject *Sender)
+{
+  simulator -> pause_experiment();
+}
+//---------------------------------------------------------------------------
+

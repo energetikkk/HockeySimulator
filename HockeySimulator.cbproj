@@ -63,7 +63,7 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
         <ProjectType>CppVCLApplication</ProjectType>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;vclimg.lib;VclSmp.lib;vclx.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Multithreaded>true</Multithreaded>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
@@ -113,7 +113,7 @@
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
-        <LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
+        <LinkPackageImports>rtl.bpi;vcl.bpi;vclimg.bpi;VclSmp.bpi;vclx.bpi</LinkPackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -145,6 +145,14 @@
             <DependentOn>MainFrame.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
+        <CppCompile Include="Simulator.cpp">
+            <VirtualFolder>{4D597542-91AD-4ACD-AD8F-DF4A27B20DD1}</VirtualFolder>
+            <BuildOrder>3</BuildOrder>
+        </CppCompile>
+        <None Include="Simulator.h">
+            <VirtualFolder>{6B013567-4B71-47A2-9DE7-628B39B88581}</VirtualFolder>
+            <BuildOrder>4</BuildOrder>
+        </None>
         <FormResources Include="MainFrame.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -178,6 +186,7 @@
                     <VFOLDER ID="{AAE5AB75-5277-44D1-97C8-0519464A5CCD}" name="src">
                         <VFOLDER ID="{4D597542-91AD-4ACD-AD8F-DF4A27B20DD1}" name="classes"/>
                         <VFOLDER ID="{A314AEA6-D7AE-4446-8B94-2710FD0FEEAE}" name="frames"/>
+                        <VFOLDER ID="{6B013567-4B71-47A2-9DE7-628B39B88581}" name="headers"/>
                     </VFOLDER>
                 </VFOLDERS>
             </CPlusPlusBuilder.Personality>
