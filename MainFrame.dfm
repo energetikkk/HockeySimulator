@@ -28003,4 +28003,13 @@ object Form1: TForm1
     TabOrder = 5
     Value = 0
   end
+  object stop_button: TButton
+    Left = 736
+    Top = 240
+    Width = 75
+    Height = 25
+    Caption = 'Pause'
+    TabOrder = 6
+    OnClick = stop_buttonClick
+  end
 end

@@ -1,3 +1,4 @@
+#include <vcl.h>
 #include "Simulator.h"
 
 Simulator::Simulator(){
@@ -13,6 +14,7 @@ void Simulator::start_experiment(){
 
 void Simulator::pause_experiment(){
 	is_running = false;
+	ShowMessage("Experiment paused!");
 }
 
 void Simulator::reset_experiment(){
