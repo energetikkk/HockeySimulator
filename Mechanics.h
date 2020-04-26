@@ -12,8 +12,8 @@ private:
 double barrier_angle;
 
 void calculate_puck_angle(double barrier_angle);
-void calculate_stick_angle()
+void calculate_stick_angle();
 
 
 
-}
+};

@@ -28012,4 +28012,13 @@ object Form1: TForm1
     TabOrder = 6
     OnClick = stop_buttonClick
   end
+  object reset_button: TButton
+    Left = 752
+    Top = 138
+    Width = 73
+    Height = 26
+    Caption = 'Reset'
+    TabOrder = 7
+    OnClick = reset_buttonClick
+  end
 end
