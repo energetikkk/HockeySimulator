@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Hockey Simulator v1.0'
-  ClientHeight = 496
-  ClientWidth = 961
+  ClientHeight = 505
+  ClientWidth = 984
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,11 +13,11 @@ object Form1: TForm1
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object Image1: TImage
+  object ControlButtons: TImage
     Left = 16
     Top = 200
-    Width = 633
-    Height = 281
+    Width = 630
+    Height = 280
     Picture.Data = {
       0954506E67496D61676589504E470D0A1A0A0000000D49484452000006500000
       02EE0806000000D1FB5BC20000000467414D410000B18F0BFC61050000000662
@@ -4483,15 +4483,15 @@ object Form1: TForm1
     Stretch = True
   end
   object Label1: TLabel
-    Left = 248
-    Top = 110
+    Left = 871
+    Top = 390
     Width = 43
     Height = 13
     Caption = 'Value +1'
   end
   object Image2: TImage
-    Left = 432
-    Top = 31
+    Left = 296
+    Top = 200
     Width = 169
     Height = 163
     Picture.Data = {
@@ -10666,29 +10666,29 @@ object Form1: TForm1
     Stretch = True
   end
   object Label2: TLabel
-    Left = 32
-    Top = 43
+    Left = 655
+    Top = 323
     Width = 278
     Height = 13
     Caption = 'Some simple examples of TButton, TLabel and TEdit usage'
   end
   object Label3: TLabel
-    Left = 32
-    Top = 143
+    Left = 655
+    Top = 423
     Width = 129
     Height = 13
     Caption = 'Hockey stick rotation angle'
   end
   object Label4: TLabel
-    Left = 432
-    Top = 8
+    Left = 689
+    Top = 273
     Width = 129
     Height = 13
     Caption = 'Hockey stick rotation angle'
   end
   object Image3: TImage
-    Left = 504
-    Top = 105
+    Left = 368
+    Top = 273
     Width = 25
     Height = 23
     Picture.Data = {
@@ -27948,8 +27948,8 @@ object Form1: TForm1
     Transparent = True
   end
   object Button1: TButton
-    Left = 159
-    Top = 105
+    Left = 782
+    Top = 385
     Width = 75
     Height = 25
     Caption = 'Click me!'
@@ -27957,8 +27957,8 @@ object Form1: TForm1
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 159
-    Top = 74
+    Left = 782
+    Top = 354
     Width = 75
     Height = 25
     Caption = 'Apply'
@@ -27966,8 +27966,8 @@ object Form1: TForm1
     OnClick = Button2Click
   end
   object Edit1: TEdit
-    Left = 32
-    Top = 74
+    Left = 655
+    Top = 354
     Width = 121
     Height = 21
     Hint = 'asd'
@@ -27975,8 +27975,8 @@ object Form1: TForm1
     TextHint = 'Enter a number'
   end
   object Edit2: TEdit
-    Left = 248
-    Top = 74
+    Left = 871
+    Top = 354
     Width = 121
     Height = 21
     ParentShowHint = False
@@ -27985,8 +27985,8 @@ object Form1: TForm1
     TextHint = 'The same value'
   end
   object Button3: TButton
-    Left = 167
-    Top = 160
+    Left = 790
+    Top = 440
     Width = 75
     Height = 25
     Caption = 'Rotate stick'
@@ -27994,8 +27994,8 @@ object Form1: TForm1
     OnClick = Button3Click
   end
   object SpinEdit1: TSpinEdit
-    Left = 32
-    Top = 162
+    Left = 655
+    Top = 442
     Width = 129
     Height = 22
     MaxValue = 0
@@ -28003,22 +28003,46 @@ object Form1: TForm1
     TabOrder = 5
     Value = 0
   end
-  object stop_button: TButton
-    Left = 736
-    Top = 240
-    Width = 75
-    Height = 25
-    Caption = 'Pause'
+  object GroupBox1: TGroupBox
+    Left = 16
+    Top = 16
+    Width = 960
+    Height = 178
+    Caption = 'Control pannel'
     TabOrder = 6
-    OnClick = stop_buttonClick
-  end
-  object reset_button: TButton
-    Left = 607
-    Top = 168
-    Width = 73
-    Height = 26
-    Caption = 'Reset'
-    TabOrder = 7
-    OnClick = reset_buttonClick
+    object ControlButtonsPanel: TPanel
+      Left = 855
+      Top = 16
+      Width = 89
+      Height = 109
+      TabOrder = 0
+      object StartButton: TButton
+        Left = 8
+        Top = 9
+        Width = 75
+        Height = 25
+        Caption = 'Start'
+        TabOrder = 0
+        OnClick = StartButtonClick
+      end
+      object PauseButton: TButton
+        Left = 8
+        Top = 40
+        Width = 75
+        Height = 25
+        Caption = 'Pause'
+        TabOrder = 1
+        OnClick = PauseButtonClick
+      end
+      object ResetButton: TButton
+        Left = 8
+        Top = 71
+        Width = 75
+        Height = 25
+        Caption = 'Reset'
+        TabOrder = 2
+        OnClick = ResetButtonClick
+      end
+    end
   end
 end

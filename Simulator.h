@@ -1,4 +1,5 @@
 #pragma once
+#include "IceRink.h"
 
 class Simulator{
 	public:
@@ -12,8 +13,9 @@ class Simulator{
 		Simulator();
 	private:
 		boolean stick_hit;
-		//Stick *active_stick;
 		boolean is_running;
+		//Stick *active_stick;
+		IceRink *iceRink;
 
 		void validate_stick_quee();
 		void iteration();

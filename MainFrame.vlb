@@ -5,9 +5,6 @@ Coordinates=79,78,44,58
 Coordinates=133,78,57,58
 Visible=True
 
-[Image1]
-Coordinates=200,78,57,58
-
 [Button2]
 Coordinates=267,78,59,58
 
@@ -34,4 +31,7 @@ Coordinates=10,146,70,36
 
 []
 Coordinates=363,1,91,36
+
+[ControlButtons]
+Coordinates=200,78,57,58
 

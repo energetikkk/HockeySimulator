@@ -1,5 +1,7 @@
 #include <vcl.h>
 #include "Simulator.h"
+#include "IceRink.h"
+
 
 Simulator::Simulator(){
 	init_experiment();
@@ -28,6 +30,7 @@ void Simulator::init_experiment(){
 	stick_hit = false;
 	//active_stick = null;
 	is_running = false;
+	iceRink = new IceRink();
 }
 
 void Simulator::validate_stick_quee(){

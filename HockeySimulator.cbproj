@@ -138,6 +138,14 @@
             <BuildOrder>1</BuildOrder>
             <PCH>true</PCH>
         </PCHCompile>
+        <CppCompile Include="IceRink.cpp">
+            <VirtualFolder>{4D597542-91AD-4ACD-AD8F-DF4A27B20DD1}</VirtualFolder>
+            <BuildOrder>8</BuildOrder>
+        </CppCompile>
+        <None Include="IceRink.h">
+            <VirtualFolder>{6B013567-4B71-47A2-9DE7-628B39B88581}</VirtualFolder>
+            <BuildOrder>7</BuildOrder>
+        </None>
         <CppCompile Include="MainFrame.cpp">
             <VirtualFolder>{A314AEA6-D7AE-4446-8B94-2710FD0FEEAE}</VirtualFolder>
             <Form>Form1</Form>
@@ -241,6 +249,12 @@
                 </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64260mt.dll" Class="DependencyModule">
                     <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="File1.c" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

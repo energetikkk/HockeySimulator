@@ -7,9 +7,8 @@
 // ---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
-#include "Simulator.h"
+
 TForm1 *Form1;
-Simulator *simulator;
 
 // ---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
@@ -47,6 +46,25 @@ void __fastcall TForm1::stop_buttonClick(TObject *Sender)
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::reset_buttonClick(TObject *Sender)
+{
+	simulator -> reset_experiment();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::StartButtonClick(TObject *Sender)
+{
+	simulator -> start_experiment();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::PauseButtonClick(TObject *Sender)
+{
+	simulator -> pause_experiment();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ResetButtonClick(TObject *Sender)
 {
 	simulator -> reset_experiment();
 }
