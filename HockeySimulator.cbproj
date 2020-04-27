@@ -145,6 +145,14 @@
             <DependentOn>MainFrame.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
+        <CppCompile Include="Mechanics.cpp">
+            <VirtualFolder>{4D597542-91AD-4ACD-AD8F-DF4A27B20DD1}</VirtualFolder>
+            <BuildOrder>6</BuildOrder>
+        </CppCompile>
+        <None Include="Mechanics.h">
+            <VirtualFolder>{6B013567-4B71-47A2-9DE7-628B39B88581}</VirtualFolder>
+            <BuildOrder>5</BuildOrder>
+        </None>
         <CppCompile Include="Simulator.cpp">
             <VirtualFolder>{4D597542-91AD-4ACD-AD8F-DF4A27B20DD1}</VirtualFolder>
             <BuildOrder>3</BuildOrder>
