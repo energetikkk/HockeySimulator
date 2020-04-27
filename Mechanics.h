@@ -2,11 +2,11 @@
 
 class Mechanics{
 public:
-//*HockeyPuck;
 
-void check_border_collision();
-void check_stick_hit();
-Mechanics();
+//должна быть ссылка на инициализированную шайбу *HockeyPuck;
+
+virtual void check_border_collision()=0;
+virtual void check_stick_hit()=0;
 
 private:
 double barrier_angle;
