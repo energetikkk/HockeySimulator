@@ -13,6 +13,6 @@ void HockeyPack:: accelerate(double acceleration_ratio){
    //to be added;
  }
 
-void HockeyPack:: void change_direction(double new_angle){
+void HockeyPack:: change_direction(double new_angle){
   //to be added;
 }

@@ -27948,10 +27948,10 @@ object Form1: TForm1
     Transparent = True
   end
   object Label5: TLabel
-    Left = 864
-    Top = 168
+    Left = 800
+    Top = 127
     Width = 31
-    Height = 13
+    Height = 21
     Caption = 'Label5'
   end
   object Button1: TButton
@@ -28020,15 +28020,15 @@ object Form1: TForm1
     OnClick = stop_buttonClick
   end
   object ListView1: TListView
-    Left = 696
-    Top = 296
+    Left = 870
+    Top = 31
     Width = 250
     Height = 150
     Columns = <>
     TabOrder = 7
   end
   object Timer1: TTimer
-    Left = 976
-    Top = 56
+    Left = 800
+    Top = 40
   end
 end
