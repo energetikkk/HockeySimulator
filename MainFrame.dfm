@@ -1,7 +1,7 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = 't'
+  Caption = 'Hockey Simulator v1.0'
   ClientHeight = 496
   ClientWidth = 1128
   Color = clBtnFace
