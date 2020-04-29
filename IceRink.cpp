@@ -1,4 +1,3 @@
-#include <vcl.h>
 #include "IceRink.h"
 
 IceRink::IceRink(int x_size , int y_size){

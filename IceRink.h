@@ -3,7 +3,7 @@
 class IceRink{
 	public:
 		int x_size, y_size;
-		IceRink(int x_size = 630, int y_size = 280);
+		IceRink(int x_size, int y_size);
 	private:
 		struct Gate{
 			int x_coord, y_coord, width, height;

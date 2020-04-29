@@ -13,8 +13,8 @@ object Form1: TForm1
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object ControlButtons: TImage
-    Left = 16
+  object IceRinkTImage: TImage
+    Left = 19
     Top = 200
     Width = 630
     Height = 280
@@ -10680,17 +10680,23 @@ object Form1: TForm1
     Caption = 'Hockey stick rotation angle'
   end
   object Label4: TLabel
-    Left = 689
-    Top = 273
+    Left = 663
+    Top = 304
     Width = 129
     Height = 13
     Caption = 'Hockey stick rotation angle'
   end
-  object Image3: TImage
-    Left = 368
-    Top = 273
+  object HockeyPuckTImage: TImage
+    Left = 324
+    Top = 325
     Width = 25
     Height = 23
+    Margins.Left = 0
+    Margins.Right = 200
+    Margins.Bottom = 20
+    Align = alCustom
+    Center = True
+    ParentShowHint = False
     Picture.Data = {
       0954506E67496D61676589504E470D0A1A0A0000000D49484452000004000000
       035A080600000017AF3E9C000000097048597300000B1300000B1301009A9C18
@@ -27944,6 +27950,7 @@ object Form1: TForm1
       006001210000006827040000D024040000000B08010000403B21000080262100
       0000584008000000DA0901000034E99D0280FF1FA2D74303D76376F600000000
       49454E44AE426082}
+    ShowHint = False
     Stretch = True
     Transparent = True
   end
@@ -27971,6 +27978,7 @@ object Form1: TForm1
     Width = 121
     Height = 21
     Hint = 'asd'
+    Margins.Left = 10
     TabOrder = 2
     TextHint = 'Enter a number'
   end
@@ -28004,17 +28012,20 @@ object Form1: TForm1
     Value = 0
   end
   object GroupBox1: TGroupBox
-    Left = 16
+    Left = 8
     Top = 16
-    Width = 960
+    Width = 601
     Height = 178
     Caption = 'Control pannel'
     TabOrder = 6
+    DesignSize = (
+      601
+      178)
     object ControlButtonsPanel: TPanel
-      Left = 855
-      Top = 16
+      Left = 503
+      Top = 27
       Width = 89
-      Height = 109
+      Height = 136
       TabOrder = 0
       object StartButton: TButton
         Left = 8
@@ -28044,5 +28055,238 @@ object Form1: TForm1
         OnClick = ResetButtonClick
       end
     end
+    object InitialCondGroupBox: TGroupBox
+      Left = 25
+      Top = 21
+      Width = 297
+      Height = 142
+      Anchors = [akLeft, akTop, akRight]
+      Caption = 'Initial conditions'
+      TabOrder = 1
+      object FrictionCoeffTEdit: TSpinEdit
+        Left = 161
+        Top = 104
+        Width = 121
+        Height = 22
+        MaxValue = 1
+        MinValue = 0
+        TabOrder = 0
+        Value = 0
+      end
+      object IterationTimeTEdit: TSpinEdit
+        Left = 113
+        Top = 76
+        Width = 121
+        Height = 22
+        MaxValue = 0
+        MinValue = 0
+        TabOrder = 1
+        Value = 0
+      end
+      object AngleTEdit: TSpinEdit
+        Left = 113
+        Top = 48
+        Width = 121
+        Height = 22
+        MaxValue = 0
+        MinValue = 0
+        TabOrder = 2
+        Value = 0
+      end
+      object SpeedTEdit: TSpinEdit
+        Left = 113
+        Top = 20
+        Width = 121
+        Height = 22
+        MaxValue = 0
+        MinValue = 0
+        TabOrder = 3
+        Value = 0
+      end
+      object StaticText6: TStaticText
+        Left = 16
+        Top = 30
+        Width = 38
+        Height = 17
+        Caption = 'Speed:'
+        TabOrder = 4
+      end
+      object StaticText7: TStaticText
+        Left = 16
+        Top = 53
+        Width = 35
+        Height = 17
+        Caption = 'Angle:'
+        TabOrder = 5
+      end
+      object StaticText8: TStaticText
+        Left = 16
+        Top = 76
+        Width = 97
+        Height = 17
+        Caption = 'Iterration time, ms:'
+        TabOrder = 6
+      end
+      object StaticText9: TStaticText
+        Left = 14
+        Top = 104
+        Width = 141
+        Height = 17
+        Caption = 'Friction coefficient, 10^(-1):'
+        TabOrder = 7
+      end
+    end
+    object GroupBox3: TGroupBox
+      Left = 328
+      Top = 20
+      Width = 169
+      Height = 143
+      Caption = 'Stick manipulations'
+      TabOrder = 2
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 632
+    Top = 16
+    Width = 329
+    Height = 178
+    Caption = 'Current state panel'
+    TabOrder = 7
+    object current_time_label: TLabel
+      Left = 82
+      Top = 23
+      Width = 89
+      Height = 13
+      Caption = 'current_time_label'
+    end
+    object x_coord_label: TLabel
+      Left = 28
+      Top = 46
+      Width = 67
+      Height = 13
+      Caption = 'x_coord_label'
+    end
+    object y_coord_label: TLabel
+      Left = 28
+      Top = 69
+      Width = 67
+      Height = 13
+      Caption = 'x_coord_label'
+    end
+    object speed_label: TLabel
+      Left = 52
+      Top = 96
+      Width = 57
+      Height = 13
+      Caption = 'speed_label'
+    end
+    object StaticText1: TStaticText
+      Left = 8
+      Top = 46
+      Width = 14
+      Height = 17
+      Caption = 'X:'
+      TabOrder = 0
+    end
+    object StaticText2: TStaticText
+      Left = 8
+      Top = 69
+      Width = 14
+      Height = 17
+      Caption = 'Y:'
+      TabOrder = 1
+    end
+    object StaticText3: TStaticText
+      Left = 8
+      Top = 23
+      Width = 68
+      Height = 17
+      Caption = 'Current time:'
+      TabOrder = 2
+    end
+    object StaticText4: TStaticText
+      Left = 8
+      Top = 96
+      Width = 38
+      Height = 17
+      Caption = 'Speed:'
+      TabOrder = 3
+    end
+    object ListBox1: TListBox
+      Left = 196
+      Top = 47
+      Width = 121
+      Height = 118
+      ItemHeight = 13
+      TabOrder = 4
+    end
+    object StaticText5: TStaticText
+      Left = 200
+      Top = 24
+      Width = 57
+      Height = 17
+      Caption = 'Stick quee:'
+      TabOrder = 5
+    end
+  end
+  object CheckBox1: TCheckBox
+    Left = 344
+    Top = 124
+    Width = 137
+    Height = 17
+    Caption = 'Accelerate puck on hit'
+    TabOrder = 8
+  end
+  object Button4: TButton
+    Left = 344
+    Top = 147
+    Width = 75
+    Height = 25
+    Caption = 'Add stick hit'
+    TabOrder = 9
+  end
+  object RadioGroup1: TRadioGroup
+    Left = 344
+    Top = 83
+    Width = 137
+    Height = 40
+    Caption = 'Gate'
+    Columns = 2
+    Ctl3D = True
+    ItemIndex = 0
+    Items.Strings = (
+      'Left'
+      'Right')
+    ParentCtl3D = False
+    TabOrder = 10
+  end
+  object StaticText10: TStaticText
+    Left = 344
+    Top = 60
+    Width = 81
+    Height = 17
+    Caption = 'Time interval, s:'
+    TabOrder = 11
+  end
+  object SpinEdit2: TSpinEdit
+    Left = 424
+    Top = 56
+    Width = 73
+    Height = 22
+    MaxValue = 0
+    MinValue = 0
+    TabOrder = 12
+    Value = 0
+  end
+  object DockTabSet1: TDockTabSet
+    Left = 872
+    Top = 256
+    Width = 185
+    Height = 21
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
   end
 end
