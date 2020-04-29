@@ -16,9 +16,9 @@
     <File Path="HockeySimulatorPCH1.h"/>
   </ProjectSortOrder>
 	<Transactions>
-    <Transaction>2020/04/22 21:55:16.000.066,=E:\HockeySimulator\File1.cpp</Transaction>
-    <Transaction>2020/04/22 21:57:30.000.872,E:\HockeySimulator\File1.cpp=E:\HockeySimulator\Simulator.cpp</Transaction>
-    <Transaction>2020/04/22 22:21:49.000.059,=E:\HockeySimulator\File1.h</Transaction>
-    <Transaction>2020/04/22 22:21:57.000.704,E:\HockeySimulator\File1.h=E:\HockeySimulator\Simulator.h</Transaction>
+    <Transaction>2020.04.22 21:55:16.000.066,=E:\HockeySimulator\File1.cpp</Transaction>
+    <Transaction>2020.04.22 21:57:30.000.872,E:\HockeySimulator\Simulator.cpp=E:\HockeySimulator\File1.cpp</Transaction>
+    <Transaction>2020.04.22 22:21:49.000.059,=E:\HockeySimulator\File1.h</Transaction>
+    <Transaction>2020.04.22 22:21:57.000.704,E:\HockeySimulator\Simulator.h=E:\HockeySimulator\File1.h</Transaction>
   </Transactions>
 </BorlandProject>

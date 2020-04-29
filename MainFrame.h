@@ -10,6 +10,7 @@
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Imaging.pngimage.hpp>
 #include <Vcl.Samples.Spin.hpp>
+#include <Vcl.ComCtrls.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -28,6 +29,9 @@ __published:	// IDE-managed Components
 	TLabel *Label4;
 	TImage *Image3;
 	TButton *stop_button;
+	TTimer *Timer1;
+	TLabel *Label5;
+	TListView *ListView1;
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall Button2Click(TObject *Sender);
 	void __fastcall Button3Click(TObject *Sender);
