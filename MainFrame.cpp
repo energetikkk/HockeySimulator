@@ -63,7 +63,7 @@ void __fastcall TForm1::Button3Click(TObject *Sender) {
 // ---------------------------------------------------------------------------
 void __fastcall TForm1::stop_buttonClick(TObject *Sender)
 {
-  simulator -> pause_experiment();
+  // To be implemented
 }
 //---------------------------------------------------------------------------
 
@@ -80,13 +80,12 @@ void __fastcall TForm1::StartButtonClick(TObject *Sender)
 	simulator->set_hockey_puck_speed(StrToInt(SpeedTEdit->Text));
 	simulator->set_friction_coeff(StrToInt(FrictionCoeffTEdit->Text)/10.0);
 	simulator->delta_t = StrToInt(IterationTimeTEdit->Text);
-	simulator->start_experiment();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::PauseButtonClick(TObject *Sender)
 {
-	simulator -> pause_experiment();
+    // To be implemented
 }
 //---------------------------------------------------------------------------
 
@@ -95,3 +94,4 @@ void __fastcall TForm1::ResetButtonClick(TObject *Sender)
 	simulator -> reset_experiment();
 }
 //---------------------------------------------------------------------------
+

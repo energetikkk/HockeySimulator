@@ -8,8 +8,6 @@ class Simulator{
 		double delta_t;
 
 		void init_experiment();
-		void start_experiment();
-		void pause_experiment();
 		void reset_experiment();
 		void set_hockey_puck_angle(int angle);
 		void set_hockey_puck_speed(int speed);

@@ -11,18 +11,6 @@ Simulator::Simulator(const int ice_rink_width, const int ice_rink_height){
 	init_experiment();
 }
 
-void Simulator::start_experiment(){
-	is_running = true;
-	while(is_running){
-		iteration();
-	}
-}
-
-void Simulator::pause_experiment(){
-	is_running = false;
-	ShowMessage("Experiment paused!");
-}
-
 void Simulator::reset_experiment(){
 	is_running = false;
 	init_experiment();
