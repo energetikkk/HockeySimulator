@@ -1,10 +1,11 @@
 #include "Mechanics.h"
-#include <vcl.h>
 
-void Mechanics::calculate_puck_angle(double barrier_angle)
+int Mechanics::calculate_puck_angle(double barrier_angle)
 {
 }
 
-void Mechanics::calculate_stick_angle()
+int Mechanics::calculate_stick_angle()
 {
 }
+
+double Mechanics::friction_coeff;

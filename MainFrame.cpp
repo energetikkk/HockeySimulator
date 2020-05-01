@@ -6,14 +6,35 @@
 #include "MainFrame.h"
 // ---------------------------------------------------------------------------
 #pragma package(smart_init)
+#pragma link "cspin"
 #pragma resource "*.dfm"
-#include "Simulator.h"
+
 TForm1 *Form1;
-Simulator *simulator;
+
+// Top left corner coordinates
+const int ICE_RINK_X_COORD = 20;
+const int ICE_RINK_Y_COORD = 200;
+const int ICE_RINK_WIDTH = 630;
+const int ICE_RINK_HEIGHT = 280;
+// Connected with picture alignment
+const int HOCKEY_PUCK_X_ALIGNMEN = -10;
+const int HOCKEY_PUCK_Y_ALIGNMEN = -10;
+// Global coord for top left hockey puck picture relatively to ice rink
+const int HOCKEY_PUCK_X_GLOBAL = ICE_RINK_X_COORD + HOCKEY_PUCK_X_ALIGNMEN;
+const int HOCKEY_PUCK_Y_GLOBAL = ICE_RINK_Y_COORD + HOCKEY_PUCK_Y_ALIGNMEN;
 
 // ---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
-	simulator = new Simulator();
+	simulator = new Simulator(ICE_RINK_WIDTH, ICE_RINK_HEIGHT);
+	IceRinkTImage->Top = ICE_RINK_Y_COORD;
+	IceRinkTImage->Left = ICE_RINK_X_COORD;
+	IceRinkTImage->Width = ICE_RINK_WIDTH;
+	IceRinkTImage->Height = ICE_RINK_HEIGHT;
+	IceRinkTImage->Invalidate();
+	std::pair<int, int> hockeyPuckCoords = simulator->get_hockey_puck_position();
+	HockeyPuckTImage->Left = HOCKEY_PUCK_X_GLOBAL + hockeyPuckCoords.first ;
+	HockeyPuckTImage->Top = HOCKEY_PUCK_Y_GLOBAL + hockeyPuckCoords.second ;
+	HockeyPuckTImage->Invalidate();
 }
 
 // ---------------------------------------------------------------------------
@@ -42,11 +63,33 @@ void __fastcall TForm1::Button3Click(TObject *Sender) {
 // ---------------------------------------------------------------------------
 void __fastcall TForm1::stop_buttonClick(TObject *Sender)
 {
-  simulator -> pause_experiment();
+  // To be implemented
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::reset_buttonClick(TObject *Sender)
+{
+	simulator -> reset_experiment();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::StartButtonClick(TObject *Sender)
+{
+	simulator->set_hockey_puck_angle(StrToInt(AngleTEdit->Text));
+	simulator->set_hockey_puck_speed(StrToInt(SpeedTEdit->Text));
+	simulator->set_friction_coeff(StrToInt(FrictionCoeffTEdit->Text)/10.0);
+	simulator->delta_t = StrToInt(IterationTimeTEdit->Text);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::PauseButtonClick(TObject *Sender)
+{
+    // To be implemented
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ResetButtonClick(TObject *Sender)
 {
 	simulator -> reset_experiment();
 }

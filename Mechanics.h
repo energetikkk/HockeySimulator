@@ -2,12 +2,13 @@
 
 class Mechanics{
 	public:
-		//there should be a link to the initialized puck *HockeyPuck;
-		virtual void check_border_collision()=0;
-		virtual void check_stick_hit()=0;
+		static double friction_coeff;
+
+		static void check_border_collision();
+		static void check_stick_hit();
 	private:
 		double barrier_angle;
 
-		void calculate_puck_angle(double barrier_angle);
-		void calculate_stick_angle();
+		static int calculate_puck_angle(double barrier_angle);
+		static int calculate_stick_angle();
 };
