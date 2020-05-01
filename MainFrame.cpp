@@ -46,5 +46,9 @@ void __fastcall TForm1::stop_buttonClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-
+void __fastcall TForm1::reset_buttonClick(TObject *Sender)
+{
+	simulator -> reset_experiment();
+}
+//---------------------------------------------------------------------------
 

@@ -28030,5 +28030,13 @@ object Form1: TForm1
   object Timer1: TTimer
     Left = 800
     Top = 40
+  object reset_button: TButton
+    Left = 607
+    Top = 168
+    Width = 73
+    Height = 26
+    Caption = 'Reset'
+    TabOrder = 7
+    OnClick = reset_buttonClick
   end
 end

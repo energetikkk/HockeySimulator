@@ -32,10 +32,12 @@ __published:	// IDE-managed Components
 	TTimer *Timer1;
 	TLabel *Label5;
 	TListView *ListView1;
+	TButton *reset_button;
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall Button2Click(TObject *Sender);
 	void __fastcall Button3Click(TObject *Sender);
 	void __fastcall stop_buttonClick(TObject *Sender);
+	void __fastcall reset_buttonClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
