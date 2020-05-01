@@ -27954,6 +27954,13 @@ object Form1: TForm1
     Stretch = True
     Transparent = True
   end
+  object Label5: TLabel
+    Left = 800
+    Top = 127
+    Width = 31
+    Height = 21
+    Caption = 'Label5'
+  end
   object Button1: TButton
     Left = 782
     Top = 385
