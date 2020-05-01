@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   Caption = 'Hockey Simulator v1.0'
   ClientHeight = 496
-  ClientWidth = 961
+  ClientWidth = 1128
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -27947,6 +27947,13 @@ object Form1: TForm1
     Stretch = True
     Transparent = True
   end
+  object Label5: TLabel
+    Left = 800
+    Top = 127
+    Width = 31
+    Height = 21
+    Caption = 'Label5'
+  end
   object Button1: TButton
     Left = 159
     Top = 105
@@ -28012,6 +28019,17 @@ object Form1: TForm1
     TabOrder = 6
     OnClick = stop_buttonClick
   end
+  object ListView1: TListView
+    Left = 870
+    Top = 31
+    Width = 250
+    Height = 150
+    Columns = <>
+    TabOrder = 7
+  end
+  object Timer1: TTimer
+    Left = 800
+    Top = 40
   object reset_button: TButton
     Left = 607
     Top = 168

@@ -129,6 +129,14 @@
         <BCC_PCHName_Clang>HockeySimulatorPCH1.h</BCC_PCHName_Clang>
     </PropertyGroup>
     <ItemGroup>
+        <CppCompile Include="HockeyPack.cpp">
+            <VirtualFolder>{4D597542-91AD-4ACD-AD8F-DF4A27B20DD1}</VirtualFolder>
+            <BuildOrder>5</BuildOrder>
+        </CppCompile>
+        <None Include="HockeyPack.h">
+            <VirtualFolder>{6B013567-4B71-47A2-9DE7-628B39B88581}</VirtualFolder>
+            <BuildOrder>6</BuildOrder>
+        </None>
         <CppCompile Include="HockeySimulator.cpp">
             <VirtualFolder>{AAE5AB75-5277-44D1-97C8-0519464A5CCD}</VirtualFolder>
             <BuildOrder>0</BuildOrder>
