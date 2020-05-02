@@ -2,6 +2,6 @@
 
 class HockeyPuck{
 	public:
-		int x_coord, y_coord, angle, speed;
-		HockeyPuck(int x_coord, int y_coord, int angle = 90, int speed = 100);
+		double x, y, v_x, v_y, friction_coeff;
+		HockeyPuck(double x, double y);
 };

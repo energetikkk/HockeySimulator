@@ -1,14 +1,14 @@
 #pragma once
+#include "HockeyPuck.h"
+#include "IceRink.h"
 
 class Mechanics{
 	public:
-		static double friction_coeff;
 
-		static void check_border_collision();
+		static void check_border_collision(HockeyPuck *hockeyPuck, IceRink *iceRink);
 		static void check_stick_hit();
 	private:
-		double barrier_angle;
 
-		static int calculate_puck_angle(double barrier_angle);
-		static int calculate_stick_angle();
+		static double calculate_puck_angle();
+		static double calculate_stick_angle();
 };

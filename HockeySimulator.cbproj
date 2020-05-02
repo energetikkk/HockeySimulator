@@ -117,6 +117,14 @@
         <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
     </PropertyGroup>
     <ItemGroup>
+        <CppCompile Include="DynSolver.cpp">
+            <VirtualFolder>{4D597542-91AD-4ACD-AD8F-DF4A27B20DD1}</VirtualFolder>
+            <BuildOrder>13</BuildOrder>
+        </CppCompile>
+        <None Include="DynSolver.h">
+            <VirtualFolder>{6B013567-4B71-47A2-9DE7-628B39B88581}</VirtualFolder>
+            <BuildOrder>14</BuildOrder>
+        </None>
         <CppCompile Include="HockeyPuck.cpp">
             <VirtualFolder>{4D597542-91AD-4ACD-AD8F-DF4A27B20DD1}</VirtualFolder>
             <BuildOrder>10</BuildOrder>
@@ -202,12 +210,12 @@
                 </Source>
                 <Folders/>
                 <VFOLDERS>
-                    <VFOLDER ID="{04B8677E-6874-4B0C-B524-2D8AF3F1C749}" name="resources"/>
                     <VFOLDER ID="{AAE5AB75-5277-44D1-97C8-0519464A5CCD}" name="src">
                         <VFOLDER ID="{4D597542-91AD-4ACD-AD8F-DF4A27B20DD1}" name="classes"/>
                         <VFOLDER ID="{A314AEA6-D7AE-4446-8B94-2710FD0FEEAE}" name="frames"/>
                         <VFOLDER ID="{6B013567-4B71-47A2-9DE7-628B39B88581}" name="headers"/>
                     </VFOLDER>
+                    <VFOLDER ID="{04B8677E-6874-4B0C-B524-2D8AF3F1C749}" name="resources"/>
                 </VFOLDERS>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="3">
