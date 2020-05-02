@@ -2,12 +2,13 @@
 #include "Simulator.h"
 #include "IceRink.h"
 #include "Mechanics.h"
+#include <math.h>
 
-typedef std::pair<int, int> HockeyPuckCoords;
+typedef std::pair<double, double> HockeyPuckCoords;
 
-Simulator::Simulator(const int ice_rink_width, const int ice_rink_height){
-	iceRink = new IceRink(ice_rink_width, ice_rink_height);
-	hockeyPuck = new HockeyPuck(ice_rink_width/2, ice_rink_height/2);
+Simulator::Simulator(double ice_rink_length, double ice_rink_width){
+	iceRink = new IceRink(ice_rink_length, ice_rink_width);
+	hockeyPuck = new HockeyPuck(ice_rink_length/2, ice_rink_width/2);
 	init_experiment();
 }
 
@@ -27,24 +28,21 @@ void Simulator::init_experiment(){
 void Simulator::validate_stick_quee(){
 }
 
-void Simulator::iteration(){
+void Simulator::integration_step(){
 	Sleep(delta_t * 1000);
 	current_time += delta_t;
 }
 
-void Simulator::set_hockey_puck_angle(int angle){
-	hockeyPuck->angle = angle;
+void Simulator::set_hockey_puck_speed(double speed, double angle){
+	hockeyPuck->v_x = speed*cos(angle/360*M_PI);
+	hockeyPuck->v_y = speed*sin(angle/360*M_PI);
 }
 
-void Simulator::set_hockey_puck_speed(int speed){
-	hockeyPuck->speed = speed;
+void Simulator::set_friction_coeff(double coeff){
+	hockeyPuck->friction_coeff = coeff;
 }
 
-void Simulator::set_friction_coeff(double coeff ){
-	Mechanics::friction_coeff = coeff;
-}
-
-std::pair<int, int> Simulator::get_hockey_puck_position(){
-	return HockeyPuckCoords(hockeyPuck->x_coord, hockeyPuck->y_coord);
+std::pair<double, double> Simulator::get_hockey_puck_position(){
+	return HockeyPuckCoords(hockeyPuck->x, hockeyPuck->y);
 }
 
