@@ -68,8 +68,18 @@ void __fastcall TForm1::stop_buttonClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void TForm1::flip_flop_tedits(){
+	SpeedTEdit->Enabled = !(SpeedTEdit->Enabled);
+	AngleTEdit->Enabled = !(AngleTEdit->Enabled);
+	FrictionCoeffTEdit->Enabled = !(FrictionCoeffTEdit->Enabled);
+	IterationTimeTEdit->Enabled = !(IterationTimeTEdit->Enabled);
+}
+
 void __fastcall TForm1::reset_buttonClick(TObject *Sender)
 {
+	if(simulator->is_running){
+		flip_flop_tedits();
+	}
 	simulator -> reset_experiment();
 }
 //---------------------------------------------------------------------------
@@ -77,15 +87,19 @@ void __fastcall TForm1::reset_buttonClick(TObject *Sender)
 
 void __fastcall TForm1::StartButtonClick(TObject *Sender)
 {
-	simulator->set_hockey_puck_speed(StrToInt(SpeedTEdit->Text), StrToInt(AngleTEdit->Text));
-	simulator->set_friction_coeff(StrToInt(FrictionCoeffTEdit->Text)/10.0);
-	simulator->delta_t = StrToInt(IterationTimeTEdit->Text);
+	simulator->set_hockey_puck_speed(StrToFloat(SpeedTEdit->Text), StrToFloat(AngleTEdit->Text));
+	simulator->set_friction_coeff(StrToFloat(FrictionCoeffTEdit->Text));
+	simulator->dt = StrToInt(IterationTimeTEdit->Text);
+	simulator->solver = DynSolverMethodRadioGroup->ItemIndex;
+	if(!simulator->is_running){
+		flip_flop_tedits();
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::PauseButtonClick(TObject *Sender)
 {
-    // To be implemented
+	// To be implemented
 }
 //---------------------------------------------------------------------------
 
@@ -94,4 +108,5 @@ void __fastcall TForm1::ResetButtonClick(TObject *Sender)
 	simulator -> reset_experiment();
 }
 //---------------------------------------------------------------------------
+
 

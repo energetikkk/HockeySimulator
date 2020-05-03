@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   Caption = 'Hockey Simulator v1.0'
   ClientHeight = 505
-  ClientWidth = 984
+  ClientWidth = 1129
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -10680,8 +10680,8 @@ object Form1: TForm1
     Caption = 'Hockey stick rotation angle'
   end
   object Label4: TLabel
-    Left = 663
-    Top = 304
+    Left = 660
+    Top = 470
     Width = 129
     Height = 13
     Caption = 'Hockey stick rotation angle'
@@ -28014,16 +28014,16 @@ object Form1: TForm1
   object GroupBox1: TGroupBox
     Left = 8
     Top = 16
-    Width = 601
+    Width = 721
     Height = 178
     Caption = 'Control pannel'
     TabOrder = 6
     DesignSize = (
-      601
+      721
       178)
     object ControlButtonsPanel: TPanel
-      Left = 503
-      Top = 27
+      Left = 629
+      Top = 23
       Width = 89
       Height = 136
       TabOrder = 0
@@ -28058,82 +28058,42 @@ object Form1: TForm1
     object InitialCondGroupBox: TGroupBox
       Left = 25
       Top = 21
-      Width = 297
+      Width = 417
       Height = 142
       Anchors = [akLeft, akTop, akRight]
       Caption = 'Initial conditions'
       TabOrder = 1
-      object FrictionCoeffTEdit: TSpinEdit
-        Left = 161
-        Top = 104
-        Width = 121
-        Height = 22
-        MaxValue = 1
-        MinValue = 0
-        TabOrder = 0
-        Value = 0
-      end
-      object IterationTimeTEdit: TSpinEdit
-        Left = 113
-        Top = 76
-        Width = 121
-        Height = 22
-        MaxValue = 0
-        MinValue = 0
-        TabOrder = 1
-        Value = 0
-      end
-      object AngleTEdit: TSpinEdit
-        Left = 113
-        Top = 48
-        Width = 121
-        Height = 22
-        MaxValue = 0
-        MinValue = 0
-        TabOrder = 2
-        Value = 0
-      end
-      object SpeedTEdit: TSpinEdit
-        Left = 113
-        Top = 20
-        Width = 121
-        Height = 22
-        MaxValue = 0
-        MinValue = 0
-        TabOrder = 3
-        Value = 0
-      end
       object StaticText6: TStaticText
-        Left = 16
+        Left = 14
         Top = 30
-        Width = 38
+        Width = 62
         Height = 17
-        Caption = 'Speed:'
-        TabOrder = 4
+        Caption = 'Speed, m/s:'
+        TabOrder = 0
       end
       object StaticText7: TStaticText
-        Left = 16
+        Left = 14
         Top = 53
-        Width = 35
+        Width = 76
         Height = 17
-        Caption = 'Angle:'
-        TabOrder = 5
+        Caption = 'Angle, degree:'
+        TabOrder = 1
       end
       object StaticText8: TStaticText
-        Left = 16
-        Top = 76
+        Left = 14
+        Top = 81
         Width = 97
         Height = 17
         Caption = 'Iterration time, ms:'
-        TabOrder = 6
+        TabOrder = 2
       end
       object StaticText9: TStaticText
-        Left = 14
+        Left = 15
         Top = 104
-        Width = 141
+        Width = 96
         Height = 17
-        Caption = 'Friction coefficient, 10^(-1):'
-        TabOrder = 7
+        Caption = 'Friction coefficient:'
+        TabOrder = 3
       end
     end
     object GroupBox3: TGroupBox
@@ -28144,9 +28104,22 @@ object Form1: TForm1
       Caption = 'Stick manipulations'
       TabOrder = 2
     end
+    object DynSolverMethodRadioGroup: TRadioGroup
+      Left = 503
+      Top = 20
+      Width = 106
+      Height = 143
+      Caption = 'Integration method'
+      ItemIndex = 0
+      Items.Strings = (
+        'Explicit Euler'
+        'Symplectic Euler'
+        'Runge-Kutta')
+      TabOrder = 3
+    end
   end
   object GroupBox2: TGroupBox
-    Left = 632
+    Left = 782
     Top = 16
     Width = 329
     Height = 178
@@ -28279,8 +28252,8 @@ object Form1: TForm1
     Value = 0
   end
   object DockTabSet1: TDockTabSet
-    Left = 872
-    Top = 256
+    Left = 832
+    Top = 471
     Width = 185
     Height = 21
     Font.Charset = DEFAULT_CHARSET
@@ -28288,5 +28261,37 @@ object Form1: TForm1
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
+  end
+  object FrictionCoeffTEdit: TEdit
+    Left = 146
+    Top = 141
+    Width = 121
+    Height = 21
+    TabOrder = 14
+    Text = '0.1'
+  end
+  object IterationTimeTEdit: TEdit
+    Left = 146
+    Top = 113
+    Width = 121
+    Height = 21
+    TabOrder = 15
+    Text = '1'
+  end
+  object AngleTEdit: TEdit
+    Left = 146
+    Top = 86
+    Width = 121
+    Height = 21
+    TabOrder = 16
+    Text = '30'
+  end
+  object SpeedTEdit: TEdit
+    Left = 146
+    Top = 59
+    Width = 121
+    Height = 21
+    TabOrder = 17
+    Text = '20'
   end
 end

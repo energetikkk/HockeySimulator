@@ -48,14 +48,10 @@ __published:	// IDE-managed Components
 	TLabel *speed_label;
 	TListBox *ListBox1;
 	TStaticText *StaticText5;
-	TSpinEdit *SpeedTEdit;
 	TStaticText *StaticText6;
 	TStaticText *StaticText7;
-	TSpinEdit *AngleTEdit;
 	TStaticText *StaticText8;
-	TSpinEdit *IterationTimeTEdit;
 	TStaticText *StaticText9;
-	TSpinEdit *FrictionCoeffTEdit;
 	TGroupBox *InitialCondGroupBox;
 	TGroupBox *GroupBox3;
 	TCheckBox *CheckBox1;
@@ -64,6 +60,11 @@ __published:	// IDE-managed Components
 	TStaticText *StaticText10;
 	TSpinEdit *SpinEdit2;
 	TDockTabSet *DockTabSet1;
+	TRadioGroup *DynSolverMethodRadioGroup;
+	TEdit *FrictionCoeffTEdit;
+	TEdit *IterationTimeTEdit;
+	TEdit *AngleTEdit;
+	TEdit *SpeedTEdit;
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall Button2Click(TObject *Sender);
 	void __fastcall Button3Click(TObject *Sender);
@@ -74,6 +75,7 @@ __published:	// IDE-managed Components
 	void __fastcall ResetButtonClick(TObject *Sender);
 private:	// User declarations
 	Simulator *simulator;
+	void flip_flop_tedits();
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
 };
