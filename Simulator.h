@@ -2,12 +2,16 @@
 #include "IceRink.h"
 #include "HockeyPuck.h"
 #include "HockeyStick.h"
+#include <vector>
+
+using namespace std;
 
 class Simulator{
 	public:
 		double current_time;
 		double delta_t;
-
+		vector<vector<double>> *current_state;
+		vector<vector<double>> *updated_state;
 		void init_experiment();
 		void reset_experiment();
 		void integration_step();
