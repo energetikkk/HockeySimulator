@@ -9,7 +9,9 @@ using namespace std;
 class Simulator{
 	public:
 		double current_time;
-		double delta_t;
+		double dt;
+		int solver;
+		bool is_running;
 		vector<vector<double>> *current_state;
 		vector<vector<double>> *updated_state;
 		void init_experiment();
@@ -22,7 +24,6 @@ class Simulator{
 
 	private:
 		bool stick_hit;
-		bool is_running;
 		//HockeyStick *stick_quee[];
 		IceRink *iceRink;
 		HockeyPuck *hockeyPuck;

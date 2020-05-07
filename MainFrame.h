@@ -76,6 +76,7 @@ __published:	// IDE-managed Components
 private:	// User declarations
 	Simulator *simulator;
 	void flip_flop_tedits();
+	void render();
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
 };
