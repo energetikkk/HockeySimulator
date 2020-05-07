@@ -1,8 +1,7 @@
 #include "HockeyPuck.h"
 
 #define DIMENSIONS 2
-#define NUMBER_OF_VARIABLES 3
-#define GRAVITY 9.81
+#define NUMBER_OF_VARIABLES 2
 
 using namespace std;
 
@@ -34,14 +33,6 @@ vector<vector<double>> HockeyPuck::get_current_state(){
 	return current_state;
 }
 
-void HockeyPuck::get_current_state(vector<vector<double>> new_state){
+void HockeyPuck::set_current_state(vector<vector<double>> new_state){
 	current_state = new_state;
-}
-
-void HockeyPuck::recalculate_acceleration(){
-	double velocity = pow(pow(current_state[0][1],2) + pow(current_state[1][1],2), 0.5));
-	double sin_val = current_state[1][1] / velocity;
-	double cos_val = current_state[0][1] / velocity;
-	current_state[0][3] = hockeyPuck_mass * GRAVITY * friction_coeff * friction_coeff * cos_val;
-	current_state[1][3] = hockeyPuck_mass * GRAVITY * friction_coeff * friction_coeff * sin_val;
 }

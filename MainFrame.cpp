@@ -24,6 +24,13 @@ const int HOCKEY_PUCK_Y_ALIGNMEN = -10;
 const int HOCKEY_PUCK_X_GLOBAL = ICE_RINK_X_COORD + HOCKEY_PUCK_X_ALIGNMEN;
 const int HOCKEY_PUCK_Y_GLOBAL = ICE_RINK_Y_COORD + HOCKEY_PUCK_Y_ALIGNMEN;
 
+void render(){
+	std::pair<double, double> hockeyPuckCoords = simulator->get_hockey_puck_position();
+	HockeyPuckTImage->Left = HOCKEY_PUCK_X_GLOBAL + hockeyPuckCoords.first * PIXEL_METRE_RATIO;
+	HockeyPuckTImage->Top = HOCKEY_PUCK_Y_GLOBAL + hockeyPuckCoords.second * PIXEL_METRE_RATIO ;
+	HockeyPuckTImage->Invalidate();
+}
+
 // ---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
 	simulator = new Simulator(ICE_RINK_LENGTH / PIXEL_METRE_RATIO, ICE_RINK_WIDTH / PIXEL_METRE_RATIO);
@@ -32,11 +39,8 @@ __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
 	IceRinkTImage->Width = ICE_RINK_LENGTH;
 	IceRinkTImage->Height = ICE_RINK_WIDTH;
 	IceRinkTImage->Invalidate();
-	std::pair<double, double> hockeyPuckCoords = simulator->get_hockey_puck_position();
-	HockeyPuckTImage->Left = HOCKEY_PUCK_X_GLOBAL + hockeyPuckCoords.first * PIXEL_METRE_RATIO;
-	HockeyPuckTImage->Top = HOCKEY_PUCK_Y_GLOBAL + hockeyPuckCoords.second * PIXEL_METRE_RATIO ;
-	HockeyPuckTImage->Invalidate();
-}
+	render();
+ }
 
 // ---------------------------------------------------------------------------
 void __fastcall TForm1::Button1Click(TObject *Sender) {
@@ -87,12 +91,16 @@ void __fastcall TForm1::reset_buttonClick(TObject *Sender)
 
 void __fastcall TForm1::StartButtonClick(TObject *Sender)
 {
-	simulator->set_hockey_puck_speed(StrToFloat(SpeedTEdit->Text), StrToFloat(AngleTEdit->Text));
-	simulator->set_friction_coeff(StrToFloat(FrictionCoeffTEdit->Text));
-	simulator->dt = StrToInt(IterationTimeTEdit->Text);
-	simulator->solver = DynSolverMethodRadioGroup->ItemIndex;
-	if(!simulator->is_running){
+	if(!(simulator->is_running)){
 		flip_flop_tedits();
+		simulator->set_hockey_puck_speed(StrToFloat(SpeedTEdit->Text), StrToFloat(AngleTEdit->Text));
+		simulator->set_friction_coeff(StrToFloat(FrictionCoeffTEdit->Text));
+		simulator->dt = StrToInt(IterationTimeTEdit->Text);
+		simulator->solver = DynSolverMethodRadioGroup->ItemIndex;
+	}
+	simulator->is_running = true;
+	for (i = 0; i < 10; i++) {
+		simulator->integration_step();
 	}
 }
 //---------------------------------------------------------------------------

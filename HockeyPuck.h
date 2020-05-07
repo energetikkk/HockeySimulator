@@ -6,7 +6,6 @@ using namespace std;
 
 class HockeyPuck{
 	public:
-		const double hockeyPuck_mass = 0.1;
 		double friction_coeff;
 		vector<vector<double>> current_state;
 
