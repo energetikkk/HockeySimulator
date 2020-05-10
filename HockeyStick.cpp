@@ -1,9 +1,7 @@
 #include "HockeyStick.h"
 
-HockeyStick::HockeyStick(int x_coord , int y_coord, int angle, bool accelerate, int hit_time){
-	this->x_coord = x_coord;
-	this->y_coord = y_coord;
-	this->angle = angle;
-	this->accelerate = accelerate;
+HockeyStick::HockeyStick(double hit_time, int gate, bool accelerate){
 	this->hit_time = hit_time;
+	this->gate = gate;
+	this->accelerate = accelerate;
 }

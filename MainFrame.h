@@ -15,18 +15,13 @@
 #include "cspin.h"
 #include <Vcl.DockTabSet.hpp>
 #include <Vcl.Tabs.hpp>
+#include <Vcl.Buttons.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
-	TButton *Button1;
 	TImage *IceRinkTImage;
-	TLabel *Label1;
-	TButton *Button2;
-	TEdit *Edit1;
-	TEdit *Edit2;
 	TImage *Image2;
-	TLabel *Label2;
 	TButton *Button3;
 	TSpinEdit *SpinEdit1;
 	TLabel *Label3;
@@ -41,12 +36,12 @@ __published:	// IDE-managed Components
 	TStaticText *StaticText1;
 	TStaticText *StaticText2;
 	TStaticText *StaticText3;
-	TLabel *current_time_label;
+	TLabel *CurrentTimeLabel;
 	TLabel *x_coord_label;
 	TLabel *y_coord_label;
 	TStaticText *StaticText4;
-	TLabel *speed_label;
-	TListBox *ListBox1;
+	TLabel *speed_v_x_label;
+	TListBox *StickListBox;
 	TStaticText *StaticText5;
 	TStaticText *StaticText6;
 	TStaticText *StaticText7;
@@ -54,29 +49,33 @@ __published:	// IDE-managed Components
 	TStaticText *StaticText9;
 	TGroupBox *InitialCondGroupBox;
 	TGroupBox *GroupBox3;
-	TCheckBox *CheckBox1;
-	TButton *Button4;
-	TRadioGroup *RadioGroup1;
+	TCheckBox *AccelerationCheckBox;
+	TButton *AddStickButton;
+	TRadioGroup *GateRadioGroup;
 	TStaticText *StaticText10;
-	TSpinEdit *SpinEdit2;
+	TSpinEdit *StickDeltaTEdit;
 	TDockTabSet *DockTabSet1;
 	TRadioGroup *DynSolverMethodRadioGroup;
 	TEdit *FrictionCoeffTEdit;
 	TEdit *IterationTimeTEdit;
 	TEdit *AngleTEdit;
 	TEdit *SpeedTEdit;
-	void __fastcall Button1Click(TObject *Sender);
-	void __fastcall Button2Click(TObject *Sender);
+	TTimer *SimulationTimer;
+	TStaticText *StaticText11;
+	TLabel *speed_v_y_label;
+	TLabel *Label5;
 	void __fastcall Button3Click(TObject *Sender);
-	void __fastcall stop_buttonClick(TObject *Sender);
-	void __fastcall reset_buttonClick(TObject *Sender);
 	void __fastcall StartButtonClick(TObject *Sender);
 	void __fastcall PauseButtonClick(TObject *Sender);
 	void __fastcall ResetButtonClick(TObject *Sender);
+	void __fastcall SimulationTimerTimer(TObject *Sender);
+	void __fastcall AddStickButtonClick(TObject *Sender);
 private:	// User declarations
+    bool is_running;
 	Simulator *simulator;
 	void flip_flop_tedits();
 	void render();
+    void render_memo();
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
 };

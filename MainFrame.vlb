@@ -1,27 +1,9 @@
-﻿[Edit2]
-Coordinates=79,78,44,58
-
-[Image2]
+﻿[Image2]
 Coordinates=133,78,57,58
 Visible=True
 
-[Button2]
-Coordinates=267,78,59,58
-
-[Button1]
-Coordinates=10,10,59,58
-
-[Edit1]
-Coordinates=142,10,44,58
-
-[Label1]
-Coordinates=259,10,53,58
-
 [Button3]
 Coordinates=10,78,59,58
-
-[Label2]
-Coordinates=196,10,53,58
 
 [Label3]
 Coordinates=79,10,53,58
@@ -30,7 +12,7 @@ Coordinates=79,10,53,58
 Coordinates=10,146,70,36
 
 []
-Coordinates=363,1,91,36
+Coordinates=79,78,44,58
 
 [IceRinkTImage]
 Coordinates=200,78,57,58
