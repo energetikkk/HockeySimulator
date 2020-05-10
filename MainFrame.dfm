@@ -4482,13 +4482,6 @@ object Form1: TForm1
       49454E44AE426082}
     Stretch = True
   end
-  object Label1: TLabel
-    Left = 871
-    Top = 390
-    Width = 43
-    Height = 13
-    Caption = 'Value +1'
-  end
   object Image2: TImage
     Left = 296
     Top = 200
@@ -10664,13 +10657,6 @@ object Form1: TForm1
       0000000000000000000000181101000000000000000000000000000000C0480B
       277AB8CE1D97DF0000000049454E44AE426082}
     Stretch = True
-  end
-  object Label2: TLabel
-    Left = 655
-    Top = 323
-    Width = 278
-    Height = 13
-    Caption = 'Some simple examples of TButton, TLabel and TEdit usage'
   end
   object Label3: TLabel
     Left = 655
@@ -27954,51 +27940,13 @@ object Form1: TForm1
     Stretch = True
     Transparent = True
   end
-  object Button1: TButton
-    Left = 782
-    Top = 385
-    Width = 75
-    Height = 25
-    Caption = 'Click me!'
-    TabOrder = 0
-    OnClick = Button1Click
-  end
-  object Button2: TButton
-    Left = 782
-    Top = 354
-    Width = 75
-    Height = 25
-    Caption = 'Apply'
-    TabOrder = 1
-    OnClick = Button2Click
-  end
-  object Edit1: TEdit
-    Left = 655
-    Top = 354
-    Width = 121
-    Height = 21
-    Hint = 'asd'
-    Margins.Left = 10
-    TabOrder = 2
-    TextHint = 'Enter a number'
-  end
-  object Edit2: TEdit
-    Left = 871
-    Top = 354
-    Width = 121
-    Height = 21
-    ParentShowHint = False
-    ShowHint = False
-    TabOrder = 3
-    TextHint = 'The same value'
-  end
   object Button3: TButton
     Left = 790
     Top = 440
     Width = 75
     Height = 25
     Caption = 'Rotate stick'
-    TabOrder = 4
+    TabOrder = 0
     OnClick = Button3Click
   end
   object SpinEdit1: TSpinEdit
@@ -28008,7 +27956,7 @@ object Form1: TForm1
     Height = 22
     MaxValue = 0
     MinValue = 0
-    TabOrder = 5
+    TabOrder = 1
     Value = 0
   end
   object GroupBox1: TGroupBox
@@ -28017,7 +27965,7 @@ object Form1: TForm1
     Width = 721
     Height = 178
     Caption = 'Control pannel'
-    TabOrder = 6
+    TabOrder = 2
     DesignSize = (
       721
       178)
@@ -28121,16 +28069,16 @@ object Form1: TForm1
   object GroupBox2: TGroupBox
     Left = 782
     Top = 16
-    Width = 329
-    Height = 178
+    Width = 339
+    Height = 233
     Caption = 'Current state panel'
-    TabOrder = 7
-    object current_time_label: TLabel
+    TabOrder = 3
+    object CurrentTimeLabel: TLabel
       Left = 82
       Top = 23
-      Width = 89
+      Width = 84
       Height = 13
-      Caption = 'current_time_label'
+      Caption = 'CurrentTimeLabel'
     end
     object x_coord_label: TLabel
       Left = 28
@@ -28146,12 +28094,26 @@ object Form1: TForm1
       Height = 13
       Caption = 'x_coord_label'
     end
-    object speed_label: TLabel
-      Left = 52
-      Top = 96
-      Width = 57
+    object speed_v_x_label: TLabel
+      Left = 76
+      Top = 99
+      Width = 53
       Height = 13
-      Caption = 'speed_label'
+      Caption = 'speed_v_x'
+    end
+    object speed_v_y_label: TLabel
+      Left = 76
+      Top = 118
+      Width = 53
+      Height = 13
+      Caption = 'speed_v_y'
+    end
+    object Label5: TLabel
+      Left = 200
+      Top = 47
+      Width = 118
+      Height = 13
+      Caption = 'Hit time|Gate|Accelerate'
     end
     object StaticText1: TStaticText
       Left = 8
@@ -28178,17 +28140,17 @@ object Form1: TForm1
       TabOrder = 2
     end
     object StaticText4: TStaticText
-      Left = 8
+      Left = 3
       Top = 96
-      Width = 38
+      Width = 59
       Height = 17
-      Caption = 'Speed:'
+      Caption = 'Speed V_X:'
       TabOrder = 3
     end
-    object ListBox1: TListBox
-      Left = 196
-      Top = 47
-      Width = 121
+    object StickListBox: TListBox
+      Left = 200
+      Top = 66
+      Width = 126
       Height = 118
       ItemHeight = 13
       TabOrder = 4
@@ -28201,24 +28163,33 @@ object Form1: TForm1
       Caption = 'Stick quee:'
       TabOrder = 5
     end
+    object StaticText11: TStaticText
+      Left = 3
+      Top = 119
+      Width = 59
+      Height = 17
+      Caption = 'Speed V_Y:'
+      TabOrder = 6
+    end
   end
-  object CheckBox1: TCheckBox
+  object AccelerationCheckBox: TCheckBox
     Left = 344
     Top = 124
     Width = 137
     Height = 17
     Caption = 'Accelerate puck on hit'
-    TabOrder = 8
+    TabOrder = 4
   end
-  object Button4: TButton
+  object AddStickButton: TButton
     Left = 344
     Top = 147
     Width = 75
     Height = 25
     Caption = 'Add stick hit'
-    TabOrder = 9
+    TabOrder = 5
+    OnClick = AddStickButtonClick
   end
-  object RadioGroup1: TRadioGroup
+  object GateRadioGroup: TRadioGroup
     Left = 344
     Top = 83
     Width = 137
@@ -28231,7 +28202,7 @@ object Form1: TForm1
       'Left'
       'Right')
     ParentCtl3D = False
-    TabOrder = 10
+    TabOrder = 6
   end
   object StaticText10: TStaticText
     Left = 344
@@ -28239,16 +28210,16 @@ object Form1: TForm1
     Width = 81
     Height = 17
     Caption = 'Time interval, s:'
-    TabOrder = 11
+    TabOrder = 7
   end
-  object SpinEdit2: TSpinEdit
+  object StickDeltaTEdit: TSpinEdit
     Left = 424
     Top = 56
     Width = 73
     Height = 22
     MaxValue = 0
     MinValue = 0
-    TabOrder = 12
+    TabOrder = 8
     Value = 0
   end
   object DockTabSet1: TDockTabSet
@@ -28267,7 +28238,7 @@ object Form1: TForm1
     Top = 141
     Width = 121
     Height = 21
-    TabOrder = 14
+    TabOrder = 10
     Text = '0.1'
   end
   object IterationTimeTEdit: TEdit
@@ -28275,15 +28246,15 @@ object Form1: TForm1
     Top = 113
     Width = 121
     Height = 21
-    TabOrder = 15
-    Text = '1'
+    TabOrder = 11
+    Text = '100'
   end
   object AngleTEdit: TEdit
     Left = 146
     Top = 86
     Width = 121
     Height = 21
-    TabOrder = 16
+    TabOrder = 12
     Text = '30'
   end
   object SpeedTEdit: TEdit
@@ -28291,7 +28262,13 @@ object Form1: TForm1
     Top = 59
     Width = 121
     Height = 21
-    TabOrder = 17
-    Text = '20'
+    TabOrder = 13
+    Text = '40'
+  end
+  object SimulationTimer: TTimer
+    Enabled = False
+    OnTimer = SimulationTimerTimer
+    Left = 672
+    Top = 232
   end
 end

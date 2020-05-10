@@ -2,7 +2,8 @@
 
 class HockeyStick{
 	public:
-		int x_coord, y_coord, angle, hit_time;
+		double hit_time;
+		int gate;
 		bool accelerate;
-		HockeyStick(int x_coord, int y_coord, int angle, bool accelerate, int hit_time);
+		HockeyStick(double hit_time, int gate, bool accelerate);
 };
