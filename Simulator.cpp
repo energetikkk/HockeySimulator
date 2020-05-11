@@ -23,7 +23,7 @@ void Simulator::reset_experiment(){
 
 void Simulator::init_experiment(){
 	current_time = 0.0;
-	stick_hit = false;
+	is_stick_hit = false;
 	hockeyPuck->set_position((iceRink->x_size)/2, (iceRink->y_size)/2);
 	hockeyPuck->set_velocity(0, 0);
 	stick_quee.clear();
@@ -34,28 +34,29 @@ void Simulator::validate_stick_quee(){
 }
 
 void Simulator::do_one_step(){
+	is_stick_hit = false;
 
-	Mechanics::border_collision_actions(hockeyPuck, iceRink);
-
-
-	double** new_state;
-	double** current_state = hockeyPuck->get_current_state();
-
-	switch(solver_method) {
-		case 0:
-			new_state = DynSolver::explicit_euler_solver(current_state, current_time, dt);
-			break;
-		case 1:
-			new_state = DynSolver::symplectic_euler_solver(current_state, current_time, dt);
-			break;
-		case 2:
-			new_state = DynSolver::runge_kutta_second_order_solver(current_state, current_time, dt);
-			break;
-		default:
-            exit(1);
+	Mechanics::process_border_collision(hockeyPuck, iceRink);
+	HockeyStick &active_stick = stick_quee.front();
+	if(active_stick.hit_time < current_time){
+		int gate = active_stick.gate;
+		double speed = hockeyPuck->get_speed();
+        // Returns sin, cos
+		pair<double, double> parts = Mechanics::get_velocity_parts(hockeyPuck, iceRink, gate);
+		hockeyPuck->set_velocity(speed * parts.first, speed * parts.second);
+		stick_hit_angle = asin(parts.second);
+		is_stick_hit = true;
+		stick_quee.pop_front();
 	}
+
+
+	double ** new_state;
+	double** current_state = hockeyPuck->get_current_state();
+	new_state = DynSolver::integration_step(current_state, current_time, dt, solver_method);
 	hockeyPuck->set_current_state(new_state);
+
 	current_time += dt;
+
 }
 
 void Simulator::set_hockey_puck_speed(double speed, double angle){
@@ -104,13 +105,13 @@ void Simulator::add_stick(double delta_t, int gate, bool accelerate){
 
 vector<vector<UnicodeString>> Simulator::get_stick_quee(){
 	vector<vector<UnicodeString>> stringified_stick_quee;
-	for(HockeyStick stick: stick_quee){
+	for(auto stick: stick_quee){
 		vector<UnicodeString> stringified_stick;
 		stringified_stick.push_back(FloatToStr(stick.hit_time));
 		stringified_stick.push_back(IntToStr(stick.gate));
 		stringified_stick.push_back(stick.accelerate);
 		stringified_stick_quee.push_back(stringified_stick);
-	}
+	};
 	return stringified_stick_quee;
 }
 

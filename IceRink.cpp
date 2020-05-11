@@ -1,15 +1,15 @@
 #include "IceRink.h"
 
-IceRink::IceRink(int x_size , int y_size){
+#define GATE_WIDTH 1
+#define GATE_HEIGHT 1
+#define GATE_MARGIN 2
+
+IceRink::IceRink(double x_size , double y_size){
 	this->x_size = x_size;
 	this->y_size = y_size;
-	int x_coord = (x_size/2)/10;
-	int y_coord = y_size/2;
-	int width = x_size/20;
-	int height = y_size/10;
-	gates[0] =  Gate(x_coord, y_coord, width, height);
-	gates[1] =  Gate(x_size - x_coord, y_coord, width, height);
+	gates[0] =  Gate(GATE_MARGIN, y_size/2, GATE_WIDTH, GATE_HEIGHT);
+	gates[1] =  Gate(x_size - GATE_MARGIN, y_size/2, GATE_WIDTH, GATE_HEIGHT);
 }
 
-IceRink::Gate::Gate(int x_coord, int y_coord, int width, int height):
+IceRink::Gate::Gate(double x_coord, double y_coord, double width, double height):
 	x_coord(x_coord), y_coord(y_coord), width(width), height(height){}

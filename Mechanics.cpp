@@ -1,6 +1,6 @@
 #include "Mechanics.h"
 
-void Mechanics::border_collision_actions(HockeyPuck *hockeyPuck, IceRink *iceRink){
+void Mechanics::process_border_collision(HockeyPuck *hockeyPuck, IceRink *iceRink){
 	std::pair<double, double> coords = hockeyPuck->get_position();
 	std::pair<double, double> velocity = hockeyPuck->get_velocity();
 	if ( (coords.first > iceRink->x_size) || (coords.first < 0) ){
@@ -15,8 +15,20 @@ void Mechanics::border_collision_actions(HockeyPuck *hockeyPuck, IceRink *iceRin
 	hockeyPuck->set_velocity(velocity.first, velocity.second);
 }
 
-void Mechanics::stick_hit_actions(HockeyPuck *hockeyPuck, IceRink *iceRink){
+std::pair<double, double> Mechanics::get_velocity_parts(HockeyPuck *hockeyPuck, IceRink *iceRink, int gate){
 
+	std::pair<double, double> coords = hockeyPuck->get_position();
+	double x_h = coords.first;
+	double y_h = coords.second;
+	double x_g = iceRink->gates[gate].x_coord;
+	double y_g = iceRink->gates[gate].y_coord;
+	double delta_x = x_g - x_h;
+	double delta_y = y_g - y_h;
+	double dist = pow( pow(delta_x, 2) + pow(delta_y, 2), 0.5);
+	double cos = delta_x / dist;
+	double sin = delta_y / dist;
+
+	return  pair<double, double>(cos, sin);
 }
 
 bool Mechanics::is_goal(HockeyPuck *hockeyPuck, IceRink *iceRink){

@@ -2,11 +2,11 @@
 
 class IceRink{
 	public:
-		int x_size, y_size;
-		IceRink(int x_size, int y_size);
+		double x_size, y_size;
+		IceRink(double x_size, double y_size);
 		struct Gate{
-			int x_coord, y_coord, width, height;
-			Gate(int x_coord, int y_coord, int width, int height);
+			double x_coord, y_coord, width, height;
+			Gate(double x_coord, double y_coord, double width, double height);
 		};
 		Gate gates[];
 };

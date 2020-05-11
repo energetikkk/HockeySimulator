@@ -5,7 +5,7 @@
 
 class Mechanics{
 	public:
-		static void border_collision_actions(HockeyPuck *hockeyPuck, IceRink *iceRink);
-		static void stick_hit_actions(HockeyPuck *hockeyPuck, IceRink *iceRink);
+		static void process_border_collision(HockeyPuck *hockeyPuck, IceRink *iceRink);
+		static std::pair<double, double> get_velocity_parts(HockeyPuck *hockeyPuck, IceRink *iceRink, int gate);
         static bool is_goal(HockeyPuck *hockeyPuck, IceRink *iceRink);
 };
