@@ -72,5 +72,25 @@ double* DynSolver::calculate_acceleration(double** current_state, double current
 	return acceleration_components;
 }
 
+double** DynSolver::integration_step(double** current_state, double current_time, double dt, int solver_method){
+	double** new_state;
+
+	switch(solver_method) {
+		case 0:
+			new_state = DynSolver::explicit_euler_solver(current_state, current_time, dt);
+			break;
+		case 1:
+			new_state = DynSolver::symplectic_euler_solver(current_state, current_time, dt);
+			break;
+		case 2:
+			new_state = DynSolver::runge_kutta_second_order_solver(current_state, current_time, dt);
+			break;
+		default:
+			exit(1);
+	}
+
+	return new_state;
+}
+
 double DynSolver::friction_coeff = 0.1;
 
