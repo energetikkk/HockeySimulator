@@ -4,6 +4,7 @@
 #pragma hdrstop
 
 #include "MainFrame.h"
+#include <stdlib.h>
 // ---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "cspin"
@@ -44,7 +45,12 @@ void TForm1::render(){
 
 // ---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
-	simulator = new Simulator(ICE_RINK_LENGTH / PIXEL_METRE_RATIO, ICE_RINK_WIDTH / PIXEL_METRE_RATIO);
+	try{
+		simulator = new Simulator(ICE_RINK_LENGTH / PIXEL_METRE_RATIO, ICE_RINK_WIDTH / PIXEL_METRE_RATIO);
+	} catch (...) {
+		ShowMessage("Bad initialization!");
+        exit(EXIT_FAILURE);
+	}
 	IceRinkTImage->Top = ICE_RINK_Y_COORD;
 	IceRinkTImage->Left = ICE_RINK_X_COORD;
 	IceRinkTImage->Width = ICE_RINK_LENGTH;

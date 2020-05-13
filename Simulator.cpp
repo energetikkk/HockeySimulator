@@ -14,6 +14,7 @@ using namespace std;
 Simulator::Simulator(double ice_rink_length, double ice_rink_width){
 	iceRink = new IceRink(ice_rink_length, ice_rink_width);
 	hockeyPuck = new HockeyPuck();
+
 	init_experiment();
 }
 
