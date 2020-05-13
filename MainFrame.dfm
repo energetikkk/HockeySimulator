@@ -4482,9 +4482,9 @@ object Form1: TForm1
       49454E44AE426082}
     Stretch = True
   end
-  object Image2: TImage
-    Left = 296
-    Top = 200
+  object StickImage: TImage
+    Left = 255
+    Top = 255
     Width = 169
     Height = 163
     Picture.Data = {
@@ -10657,20 +10657,7 @@ object Form1: TForm1
       0000000000000000000000181101000000000000000000000000000000C0480B
       277AB8CE1D97DF0000000049454E44AE426082}
     Stretch = True
-  end
-  object Label3: TLabel
-    Left = 655
-    Top = 423
-    Width = 129
-    Height = 13
-    Caption = 'Hockey stick rotation angle'
-  end
-  object Label4: TLabel
-    Left = 660
-    Top = 470
-    Width = 129
-    Height = 13
-    Caption = 'Hockey stick rotation angle'
+    Visible = False
   end
   object HockeyPuckTImage: TImage
     Left = 324
@@ -27940,32 +27927,13 @@ object Form1: TForm1
     Stretch = True
     Transparent = True
   end
-  object Button3: TButton
-    Left = 790
-    Top = 440
-    Width = 75
-    Height = 25
-    Caption = 'Rotate stick'
-    TabOrder = 0
-    OnClick = Button3Click
-  end
-  object SpinEdit1: TSpinEdit
-    Left = 655
-    Top = 442
-    Width = 129
-    Height = 22
-    MaxValue = 0
-    MinValue = 0
-    TabOrder = 1
-    Value = 0
-  end
   object GroupBox1: TGroupBox
     Left = 8
     Top = 16
     Width = 721
     Height = 178
     Caption = 'Control pannel'
-    TabOrder = 2
+    TabOrder = 0
     DesignSize = (
       721
       178)
@@ -28072,7 +28040,7 @@ object Form1: TForm1
     Width = 339
     Height = 233
     Caption = 'Current state panel'
-    TabOrder = 3
+    TabOrder = 1
     object CurrentTimeLabel: TLabel
       Left = 82
       Top = 23
@@ -28178,7 +28146,7 @@ object Form1: TForm1
     Width = 137
     Height = 17
     Caption = 'Accelerate puck on hit'
-    TabOrder = 4
+    TabOrder = 2
   end
   object AddStickButton: TButton
     Left = 344
@@ -28186,7 +28154,7 @@ object Form1: TForm1
     Width = 75
     Height = 25
     Caption = 'Add stick hit'
-    TabOrder = 5
+    TabOrder = 3
     OnClick = AddStickButtonClick
   end
   object GateRadioGroup: TRadioGroup
@@ -28202,7 +28170,7 @@ object Form1: TForm1
       'Left'
       'Right')
     ParentCtl3D = False
-    TabOrder = 6
+    TabOrder = 4
   end
   object StaticText10: TStaticText
     Left = 344
@@ -28210,7 +28178,7 @@ object Form1: TForm1
     Width = 81
     Height = 17
     Caption = 'Time interval, s:'
-    TabOrder = 7
+    TabOrder = 5
   end
   object StickDeltaTEdit: TSpinEdit
     Left = 424
@@ -28219,26 +28187,15 @@ object Form1: TForm1
     Height = 22
     MaxValue = 0
     MinValue = 0
-    TabOrder = 8
+    TabOrder = 6
     Value = 0
-  end
-  object DockTabSet1: TDockTabSet
-    Left = 832
-    Top = 471
-    Width = 185
-    Height = 21
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
   end
   object FrictionCoeffTEdit: TEdit
     Left = 146
     Top = 141
     Width = 121
     Height = 21
-    TabOrder = 10
+    TabOrder = 7
     Text = '0.1'
   end
   object IterationTimeTEdit: TEdit
@@ -28246,15 +28203,15 @@ object Form1: TForm1
     Top = 113
     Width = 121
     Height = 21
-    TabOrder = 11
-    Text = '100'
+    TabOrder = 8
+    Text = '50'
   end
   object AngleTEdit: TEdit
     Left = 146
     Top = 86
     Width = 121
     Height = 21
-    TabOrder = 12
+    TabOrder = 9
     Text = '30'
   end
   object SpeedTEdit: TEdit
@@ -28262,8 +28219,8 @@ object Form1: TForm1
     Top = 59
     Width = 121
     Height = 21
-    TabOrder = 13
-    Text = '40'
+    TabOrder = 10
+    Text = '30'
   end
   object SimulationTimer: TTimer
     Enabled = False

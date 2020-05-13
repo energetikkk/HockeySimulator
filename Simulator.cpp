@@ -14,6 +14,7 @@ using namespace std;
 Simulator::Simulator(double ice_rink_length, double ice_rink_width){
 	iceRink = new IceRink(ice_rink_length, ice_rink_width);
 	hockeyPuck = new HockeyPuck();
+
 	init_experiment();
 }
 
@@ -36,24 +37,29 @@ void Simulator::validate_stick_quee(){
 void Simulator::do_one_step(){
 	is_stick_hit = false;
 
-	Mechanics::process_border_collision(hockeyPuck, iceRink);
-	HockeyStick &active_stick = stick_quee.front();
-	if(active_stick.hit_time < current_time){
-		int gate = active_stick.gate;
-		double speed = hockeyPuck->get_speed();
-        // Returns sin, cos
-		pair<double, double> parts = Mechanics::get_velocity_parts(hockeyPuck, iceRink, gate);
-		hockeyPuck->set_velocity(speed * parts.first, speed * parts.second);
-		stick_hit_angle = asin(parts.second);
-		is_stick_hit = true;
-		stick_quee.pop_front();
+	if(stick_quee.size() > 0){
+		HockeyStick &active_stick = stick_quee[0];
+		if(active_stick.hit_time < current_time){
+			int gate = active_stick.gate;
+			double speed = hockeyPuck->get_speed();
+			// Returns sin, cos
+			pair<double, double> parts = Mechanics::get_velocity_parts(hockeyPuck, iceRink, gate);
+			if (active_stick.accelerate) {
+				speed *= 1.2;
+			}
+			hockeyPuck->set_velocity(speed * parts.first, speed * parts.second);
+			stick_hit_angle = asin(parts.second) * 360 / (2 * PI) ;
+			is_stick_hit = true;
+			stick_quee.pop_front();
+		}
 	}
-
 
 	double ** new_state;
 	double** current_state = hockeyPuck->get_current_state();
 	new_state = DynSolver::integration_step(current_state, current_time, dt, solver_method);
 	hockeyPuck->set_current_state(new_state);
+
+	Mechanics::process_border_collision(hockeyPuck, iceRink);
 
 	current_time += dt;
 

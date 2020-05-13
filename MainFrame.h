@@ -21,11 +21,7 @@ class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
 	TImage *IceRinkTImage;
-	TImage *Image2;
-	TButton *Button3;
-	TSpinEdit *SpinEdit1;
-	TLabel *Label3;
-	TLabel *Label4;
+	TImage *StickImage;
 	TImage *HockeyPuckTImage;
 	TGroupBox *GroupBox1;
 	TPanel *ControlButtonsPanel;
@@ -54,7 +50,6 @@ __published:	// IDE-managed Components
 	TRadioGroup *GateRadioGroup;
 	TStaticText *StaticText10;
 	TSpinEdit *StickDeltaTEdit;
-	TDockTabSet *DockTabSet1;
 	TRadioGroup *DynSolverMethodRadioGroup;
 	TEdit *FrictionCoeffTEdit;
 	TEdit *IterationTimeTEdit;
@@ -64,18 +59,19 @@ __published:	// IDE-managed Components
 	TStaticText *StaticText11;
 	TLabel *speed_v_y_label;
 	TLabel *Label5;
-	void __fastcall Button3Click(TObject *Sender);
 	void __fastcall StartButtonClick(TObject *Sender);
 	void __fastcall PauseButtonClick(TObject *Sender);
 	void __fastcall ResetButtonClick(TObject *Sender);
 	void __fastcall SimulationTimerTimer(TObject *Sender);
 	void __fastcall AddStickButtonClick(TObject *Sender);
 private:	// User declarations
-    bool is_running;
+	bool is_running;
+    double last_hit_time;
 	Simulator *simulator;
 	void flip_flop_tedits();
 	void render();
-    void render_memo();
+	void render_memo();
+    void render_canvas();
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
 };

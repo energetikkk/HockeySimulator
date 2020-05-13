@@ -14,8 +14,6 @@ class Simulator{
 		bool is_stick_hit;
 		bool enough_energy();
 		bool is_goal();
-		vector<vector<double>> *current_state;
-		vector<vector<double>> *updated_state;
 		void reset_experiment();
 		void do_one_step();
 		void set_hockey_puck_speed(double speed, double angle);
