@@ -147,18 +147,22 @@ void __fastcall TForm1::SimulationTimerTimer(TObject *Sender)
 void __fastcall TForm1::AddStickButtonClick(TObject *Sender)
 {
 	double delta_t = StrToFloat(StickDeltaTEdit->Text);
-	int gate = GateRadioGroup->ItemIndex;
-	bool accelerate = AccelerationCheckBox->Checked;
-	try{
-		simulator->add_stick(delta_t, gate, accelerate);
-		render_memo();
-	} catch(...){
-		Form1->PauseButtonClick(Form1);
-		ShowMessage("You can't add stick with the same hit time!");
+	if (delta_t < 0) {
+        Form1->PauseButtonClick(Form1);
+		ShowMessage("You can't set negative time!");
+	} else {
+		int gate = GateRadioGroup->ItemIndex;
+		bool accelerate = AccelerationCheckBox->Checked;
+		try{
+			simulator->add_stick(delta_t, gate, accelerate);
+			render_memo();
+		} catch(...){
+			Form1->PauseButtonClick(Form1);
+			ShowMessage("You can't add stick with the same hit time!");
+		}
 	}
 }
 //---------------------------------------------------------------------------
-
 void TForm1::render_memo(){
 	vector<vector<UnicodeString>> quee = simulator->get_stick_quee();
 	StickListBox->Clear();
