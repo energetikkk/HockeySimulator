@@ -1,4 +1,7 @@
 #pragma once
+#include <vector>
+
+using namespace std;
 
 class IceRink{
 	public:
@@ -8,5 +11,5 @@ class IceRink{
 			double x_coord, y_coord, width, height;
 			Gate(double x_coord, double y_coord, double width, double height);
 		};
-		Gate gates[];
+		vector<Gate> gates;
 };

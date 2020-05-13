@@ -1,19 +1,10 @@
-﻿[Image2]
-Coordinates=133,78,57,58
-Visible=True
-
-[Button3]
+﻿[]
 Coordinates=10,78,59,58
-
-[Label3]
-Coordinates=79,10,53,58
-
-[SpinEdit1]
-Coordinates=10,146,70,36
-
-[]
-Coordinates=79,78,44,58
 
 [IceRinkTImage]
 Coordinates=200,78,57,58
+
+[StickImage]
+Coordinates=133,78,57,58
+Visible=True
 

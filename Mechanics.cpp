@@ -20,8 +20,8 @@ std::pair<double, double> Mechanics::get_velocity_parts(HockeyPuck *hockeyPuck, 
 	std::pair<double, double> coords = hockeyPuck->get_position();
 	double x_h = coords.first;
 	double y_h = coords.second;
-	double x_g = iceRink->gates[gate].x_coord;
-	double y_g = iceRink->gates[gate].y_coord;
+	double x_g = (iceRink->gates)[gate].x_coord;
+	double y_g = (iceRink->gates)[gate].y_coord;
 	double delta_x = x_g - x_h;
 	double delta_y = y_g - y_h;
 	double dist = pow( pow(delta_x, 2) + pow(delta_y, 2), 0.5);
@@ -32,7 +32,7 @@ std::pair<double, double> Mechanics::get_velocity_parts(HockeyPuck *hockeyPuck, 
 }
 
 bool Mechanics::is_goal(HockeyPuck *hockeyPuck, IceRink *iceRink){
-	bool is_goal;
+	bool is_goal = false;
 	pair<double, double> coords = hockeyPuck->get_position();
 
 	for(int i = 0; i < 2; i++){
