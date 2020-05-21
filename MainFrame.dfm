@@ -2,20 +2,24 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Hockey Simulator v1.0'
-  ClientHeight = 505
-  ClientWidth = 1129
+  ClientHeight = 561
+  ClientWidth = 1184
   Color = clBtnFace
+  Constraints.MinHeight = 600
+  Constraints.MinWidth = 1200
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  PrintScale = poNone
+  OnResize = FormResize
   PixelsPerInch = 96
   TextHeight = 13
   object IceRinkTImage: TImage
-    Left = 19
-    Top = 200
+    Left = 11
+    Top = 204
     Width = 630
     Height = 280
     Picture.Data = {
@@ -4483,8 +4487,8 @@ object Form1: TForm1
     Stretch = True
   end
   object StickImage: TImage
-    Left = 255
-    Top = 255
+    Left = 247
+    Top = 239
     Width = 169
     Height = 163
     Picture.Data = {
@@ -10660,8 +10664,8 @@ object Form1: TForm1
     Visible = False
   end
   object HockeyPuckTImage: TImage
-    Left = 324
-    Top = 325
+    Left = 316
+    Top = 309
     Width = 25
     Height = 23
     Margins.Left = 0
@@ -27928,8 +27932,8 @@ object Form1: TForm1
     Transparent = True
   end
   object GroupBox1: TGroupBox
-    Left = 8
-    Top = 16
+    Left = 0
+    Top = 0
     Width = 721
     Height = 178
     Caption = 'Control pannel'
@@ -28035,10 +28039,10 @@ object Form1: TForm1
     end
   end
   object GroupBox2: TGroupBox
-    Left = 782
-    Top = 16
+    Left = 774
+    Top = 0
     Width = 339
-    Height = 233
+    Height = 178
     Caption = 'Current state panel'
     TabOrder = 1
     object CurrentTimeLabel: TLabel
@@ -28078,7 +28082,7 @@ object Form1: TForm1
     end
     object Label5: TLabel
       Left = 200
-      Top = 47
+      Top = 37
       Width = 118
       Height = 13
       Caption = 'Hit time|Gate|Accelerate'
@@ -28117,15 +28121,15 @@ object Form1: TForm1
     end
     object StickListBox: TListBox
       Left = 200
-      Top = 66
+      Top = 56
       Width = 126
-      Height = 118
+      Height = 107
       ItemHeight = 13
       TabOrder = 4
     end
     object StaticText5: TStaticText
       Left = 200
-      Top = 24
+      Top = 19
       Width = 57
       Height = 17
       Caption = 'Stick quee:'
@@ -28141,16 +28145,16 @@ object Form1: TForm1
     end
   end
   object AccelerationCheckBox: TCheckBox
-    Left = 344
-    Top = 124
+    Left = 336
+    Top = 108
     Width = 137
     Height = 17
     Caption = 'Accelerate puck on hit'
     TabOrder = 2
   end
   object AddStickButton: TButton
-    Left = 344
-    Top = 147
+    Left = 336
+    Top = 131
     Width = 75
     Height = 25
     Caption = 'Add stick hit'
@@ -28158,8 +28162,8 @@ object Form1: TForm1
     OnClick = AddStickButtonClick
   end
   object GateRadioGroup: TRadioGroup
-    Left = 344
-    Top = 83
+    Left = 336
+    Top = 67
     Width = 137
     Height = 40
     Caption = 'Gate'
@@ -28173,16 +28177,16 @@ object Form1: TForm1
     TabOrder = 4
   end
   object StaticText10: TStaticText
-    Left = 344
-    Top = 60
+    Left = 336
+    Top = 44
     Width = 81
     Height = 17
     Caption = 'Time interval, s:'
     TabOrder = 5
   end
   object StickDeltaTEdit: TSpinEdit
-    Left = 424
-    Top = 56
+    Left = 416
+    Top = 40
     Width = 73
     Height = 22
     MaxValue = 0
@@ -28191,32 +28195,32 @@ object Form1: TForm1
     Value = 0
   end
   object FrictionCoeffTEdit: TEdit
-    Left = 146
-    Top = 141
+    Left = 138
+    Top = 125
     Width = 121
     Height = 21
     TabOrder = 7
-    Text = '0.1'
+    Text = '1'
   end
   object IterationTimeTEdit: TEdit
-    Left = 146
-    Top = 113
+    Left = 138
+    Top = 97
     Width = 121
     Height = 21
     TabOrder = 8
     Text = '50'
   end
   object AngleTEdit: TEdit
-    Left = 146
-    Top = 86
+    Left = 138
+    Top = 70
     Width = 121
     Height = 21
     TabOrder = 9
-    Text = '30'
+    Text = '205'
   end
   object SpeedTEdit: TEdit
-    Left = 146
-    Top = 59
+    Left = 138
+    Top = 43
     Width = 121
     Height = 21
     TabOrder = 10

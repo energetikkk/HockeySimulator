@@ -24,6 +24,7 @@ void Simulator::reset_experiment(){
 
 void Simulator::init_experiment(){
 	current_time = 0.0;
+    last_collision_time = 0;
 	is_stick_hit = false;
 	hockeyPuck->set_position((iceRink->x_size)/2, (iceRink->y_size)/2);
 	hockeyPuck->set_velocity(0, 0);
@@ -59,7 +60,7 @@ void Simulator::do_one_step(){
 	new_state = DynSolver::integration_step(current_state, current_time, dt, solver_method);
 	hockeyPuck->set_current_state(new_state);
 
-	Mechanics::process_border_collision(hockeyPuck, iceRink);
+	Mechanics::process_border_collision(hockeyPuck, iceRink, this);
 
 	current_time += dt;
 

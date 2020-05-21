@@ -9,7 +9,7 @@ using namespace std;
 
 class Simulator{
 	public:
-		double dt, stick_hit_angle;
+		double dt, stick_hit_angle, last_collision_time;
 		int solver_method;
 		bool is_stick_hit;
 		bool enough_energy();

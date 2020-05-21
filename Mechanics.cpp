@@ -1,8 +1,76 @@
 #include "Mechanics.h"
+#include <math.h>
+#include <algorithm>
 
-void Mechanics::process_border_collision(HockeyPuck *hockeyPuck, IceRink *iceRink){
+void Mechanics::process_border_collision(HockeyPuck *hockeyPuck, IceRink *iceRink, Simulator *simulator){
 	std::pair<double, double> coords = hockeyPuck->get_position();
 	std::pair<double, double> velocity = hockeyPuck->get_velocity();
+	// Process arc angle hit
+	double v_par,v_perp;
+	double beta, res;
+	if (simulator->get_current_time() - simulator->last_collision_time > 0.5){
+		try{
+			if(coords.first < 8.0 && coords.second < 8.0){
+				if((pow(coords.first - 8.0,2.0) + pow(coords.second - 8.0, 2.0)) > 60.0){
+					res = pow(64 - pow((coords.first>0?coords.first:0) - 8, 2), 0.5);
+					coords.second = 8.0 - res;
+					beta = 0.785;
+					if (res != 0) {
+						beta = atan((8.0 - coords.first)/res);
+					}
+					v_par = velocity.first * cos(beta) - velocity.second * sin(beta);
+					v_perp = velocity.first * sin(beta) + velocity.second * cos(beta);
+					velocity.first = v_par * cos(beta) + (-1.0) * v_perp * sin(beta);
+					velocity.second = -1.0 * v_par * sin(beta) + (-1.0) * v_perp * cos(beta);
+				}
+			} else if (coords.first > 55 && coords.second < 8){
+				if((pow(coords.first - 55.0,2.0) + pow(coords.second - 8, 2.0)) > 60.0){
+					res = pow(64 - pow((coords.first<63?coords.first:63) - 55, 2), 0.5);
+					coords.second = 8.0 - res;
+					beta = 0.785;
+					if (res != 0) {
+						beta = atan((coords.first - 55.0)/res);
+					}
+					v_par = velocity.first * cos(beta) - velocity.second * sin(beta);
+					v_perp = velocity.first * sin(beta) + velocity.second * cos(beta);
+					velocity.first = v_par * cos(beta) + (-1.0) * v_perp * sin(beta);
+					velocity.second = v_par * sin(beta) - (-1.0) * v_perp * cos(beta);
+				}
+
+			} else if (coords.first < 8 && coords.second > 20){
+				if((pow(coords.first - 8.0,2.0) + pow(coords.second - 20, 2.0)) > 60.0){
+					res = pow(64 - pow((coords.first>0?coords.first:0) - 8, 2), 0.5);
+					coords.second = 20 + res;
+					beta = 0.785;
+					if (res != 0) {
+						beta = atan((coords.first - 55.0)/res);
+					}
+					v_par = velocity.first * cos(beta) - velocity.second * sin(beta);
+					v_perp = velocity.first * sin(beta) + velocity.second * cos(beta);
+					velocity.first = v_par * cos(beta) + (-1.0) * v_perp * sin(beta);
+					velocity.second = v_par * sin(beta) - (-1.0) * v_perp * cos(beta);
+				}
+
+			} else if (coords.first > 55 && coords.second > 20) {
+				if((pow(coords.first - 55, 2) + pow(coords.second - 20, 2.0)) > 60){
+					res = pow(64 - pow((coords.first<63?coords.first:63) - 55, 2), 0.5);
+					coords.second = 20 + res;
+					beta = 0.785;
+					if (res != 0) {
+						beta = atan((coords.first - 55)/res);
+					}
+					v_par = velocity.first * cos(beta) - velocity.second * sin(beta);
+					v_perp = velocity.first * sin(beta) + velocity.second * cos(beta);
+					velocity.first = v_par * cos(beta) + (-1.0) * v_perp * sin(beta);
+					velocity.second = -1.0 * v_par * sin(beta) + (-1.0) * v_perp * cos(beta);
+				}
+
+		}
+		} catch (...){
+			exit(1);
+		}
+	}
+
 	if ( (coords.first > iceRink->x_size) || (coords.first < 0) ){
 		coords.first = coords.first < 0 ? 0 : iceRink->x_size;
 		velocity.first = velocity.first*(-1);

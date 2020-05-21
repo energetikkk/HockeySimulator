@@ -64,6 +64,7 @@ __published:	// IDE-managed Components
 	void __fastcall ResetButtonClick(TObject *Sender);
 	void __fastcall SimulationTimerTimer(TObject *Sender);
 	void __fastcall AddStickButtonClick(TObject *Sender);
+	void __fastcall FormResize(TObject *Sender);
 private:	// User declarations
 	bool is_running;
     double last_hit_time;

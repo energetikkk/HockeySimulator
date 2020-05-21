@@ -12,12 +12,23 @@
 
 TForm1 *Form1;
 
-const int PIXEL_METRE_RATIO = 10;
+const double INIT_FRICTION = 0.1;
+const double INIT_PIXEL_METRE_RATIO = 10;
+double PIXEL_METRE_RATIO = INIT_PIXEL_METRE_RATIO;
+// Form stating size
+const double INIT_FORM_WIDTH = 1200;
+const double INIT_FORM_HEIGHT = 600;
+double LAST_FORM_WIDTH = 1200;
+double LAST_FORM_HEIGHT = 600;
+const int FORM_SIZE_RATIO = 2;
+double SCALE = 1.0;
 // Top left corner coordinates
-const int ICE_RINK_X_COORD = 20;
-const int ICE_RINK_Y_COORD = 200;
-const int ICE_RINK_WIDTH = 630;
-const int ICE_RINK_HEIGHT = 280;
+double ICE_RINK_X_COORD = 20;
+double ICE_RINK_Y_COORD = 220;
+const int ICE_RINK_WIDTH_METERS = 63;
+const int ICE_RINK_HEIGHT_METERS = 28;
+double ICE_RINK_WIDTH = 630;
+double ICE_RINK_HEIGHT = 280;
 // Connected with pictures alignment
 const int HOCKEY_PUCK_X_ALIGNMEN = -10;
 const int HOCKEY_PUCK_Y_ALIGNMEN = -10;
@@ -30,6 +41,12 @@ const int HOCKEY_PUCK_Y_GLOBAL = ICE_RINK_Y_COORD + HOCKEY_PUCK_Y_ALIGNMEN;
 const int STICK_SHOW_TIME = 2; // How long display stick after hit in sec
 
 void TForm1::render(){
+
+	IceRinkTImage->Top = ICE_RINK_Y_COORD;
+	IceRinkTImage->Left = ICE_RINK_X_COORD;
+	IceRinkTImage->Width = ICE_RINK_WIDTH * SCALE;
+	IceRinkTImage->Height = ICE_RINK_HEIGHT * SCALE;
+
 	std::pair<double, double> hockeyPuckCoords = simulator->get_hockey_puck_position();
 	double hockey_puck_x = HOCKEY_PUCK_X_GLOBAL + hockeyPuckCoords.first * PIXEL_METRE_RATIO;
 	double hockey_puck_y = HOCKEY_PUCK_Y_GLOBAL + hockeyPuckCoords.second * PIXEL_METRE_RATIO;
@@ -49,7 +66,7 @@ void TForm1::render(){
 	if(simulator->is_stick_hit){
 		int normalized_angle = abs((int)simulator->stick_hit_angle % 360);
 		int angle = round(normalized_angle / 15.0) * 15;
-		String picture_path = "../../resources/hockeySticks/hockeyStick" + IntToStr(angle) + ".png";
+		String picture_path = "./resources/hockeySticks/hockeyStick" + IntToStr(angle) + ".png";
 		StickImage->Picture->LoadFromFile(picture_path);
 		StickImage->Left = hockey_puck_x + HOCKEY_STICK_X_ALIGNMEN;
 		StickImage->Top =  hockey_puck_y + HOCKEY_STICK_X_ALIGNMEN;
@@ -64,22 +81,22 @@ void TForm1::render(){
 
 	render_canvas();
 	render_memo();
+
 }
 
 // ---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
 	try{
-		simulator = new Simulator(ICE_RINK_WIDTH / PIXEL_METRE_RATIO, ICE_RINK_HEIGHT / PIXEL_METRE_RATIO);
+		simulator = new Simulator(63, 28);
 	} catch (...) {
 		ShowMessage("Bad initialization!");
         exit(EXIT_FAILURE);
 	}
-	IceRinkTImage->Top = ICE_RINK_Y_COORD;
-	IceRinkTImage->Left = ICE_RINK_X_COORD;
-	IceRinkTImage->Width = ICE_RINK_WIDTH;
-	IceRinkTImage->Height = ICE_RINK_HEIGHT;
-	IceRinkTImage->Invalidate();
 
+	Form1->ClientWidth = INIT_FORM_WIDTH;
+	Form1->ClientHeight = INIT_FORM_HEIGHT;
+
+	FrictionCoeffTEdit->Text = FloatToStr(INIT_FRICTION);
 	render();
  }
 // ---------------------------------------------------------------------------
@@ -182,35 +199,45 @@ void TForm1::render_memo(){
 
 void TForm1::render_canvas(){
 	// Render gates
-	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + 40, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT/2 - 20);
-	Form1->Canvas->LineTo(ICE_RINK_X_COORD + 40, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT/2 + 20);
-	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + 60, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT/2 - 20);
-	Form1->Canvas->LineTo(ICE_RINK_X_COORD + 60, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT/2 + 20);
+	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + 40*SCALE, ICE_RINK_Y_COORD + (ICE_RINK_HEIGHT/2 - 20)*SCALE);
+	Form1->Canvas->LineTo(ICE_RINK_X_COORD + 40*SCALE, ICE_RINK_Y_COORD + (ICE_RINK_HEIGHT/2 + 20)*SCALE);
+	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + 60*SCALE, ICE_RINK_Y_COORD + (ICE_RINK_HEIGHT/2 - 20)*SCALE);
+	Form1->Canvas->LineTo(ICE_RINK_X_COORD + 60*SCALE, ICE_RINK_Y_COORD + (ICE_RINK_HEIGHT/2 + 20)*SCALE);
 
-	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + 40, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT/2 - 20);
-	Form1->Canvas->LineTo(ICE_RINK_X_COORD + 60, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT/2 - 20);
-	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + 40, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT/2 + 20);
-	Form1->Canvas->LineTo(ICE_RINK_X_COORD + 60, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT/2 + 20);
+	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + 40*SCALE, ICE_RINK_Y_COORD + (ICE_RINK_HEIGHT/2 - 20)*SCALE);
+	Form1->Canvas->LineTo(ICE_RINK_X_COORD + 60*SCALE, ICE_RINK_Y_COORD + (ICE_RINK_HEIGHT/2 - 20)*SCALE);
+	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + 40*SCALE, ICE_RINK_Y_COORD + (ICE_RINK_HEIGHT/2 + 20)*SCALE);
+	Form1->Canvas->LineTo(ICE_RINK_X_COORD + 60*SCALE, ICE_RINK_Y_COORD + (ICE_RINK_HEIGHT/2 + 20)*SCALE);
 
-	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + ICE_RINK_WIDTH - 40, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT/2 - 20);
-	Form1->Canvas->LineTo(ICE_RINK_X_COORD + ICE_RINK_WIDTH - 40, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT/2 + 20);
-	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + ICE_RINK_WIDTH - 60, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT/2 - 20);
-	Form1->Canvas->LineTo(ICE_RINK_X_COORD + ICE_RINK_WIDTH - 60, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT/2 + 20);
+	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + (ICE_RINK_WIDTH - 40)*SCALE, ICE_RINK_Y_COORD + (ICE_RINK_HEIGHT/2 - 20)*SCALE);
+	Form1->Canvas->LineTo(ICE_RINK_X_COORD + (ICE_RINK_WIDTH - 40)*SCALE, ICE_RINK_Y_COORD + (ICE_RINK_HEIGHT/2 + 20)*SCALE);
+	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + (ICE_RINK_WIDTH - 60)*SCALE, ICE_RINK_Y_COORD + (ICE_RINK_HEIGHT/2 - 20)*SCALE);
+	Form1->Canvas->LineTo(ICE_RINK_X_COORD + (ICE_RINK_WIDTH - 60)*SCALE, ICE_RINK_Y_COORD + (ICE_RINK_HEIGHT/2 + 20)*SCALE);
 
-	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + ICE_RINK_WIDTH - 40, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT/2 - 20);
-	Form1->Canvas->LineTo(ICE_RINK_X_COORD + ICE_RINK_WIDTH - 60, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT/2 - 20);
-	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + ICE_RINK_WIDTH - 40 , ICE_RINK_Y_COORD + ICE_RINK_HEIGHT/2 + 20);
-	Form1->Canvas->LineTo(ICE_RINK_X_COORD + ICE_RINK_WIDTH - 60, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT/2 + 20);
-
-	// Render Ice Rink margins
-	Form1->Canvas->MoveTo(ICE_RINK_X_COORD, ICE_RINK_Y_COORD);
-	Form1->Canvas->LineTo(ICE_RINK_X_COORD + ICE_RINK_WIDTH, ICE_RINK_Y_COORD);
-	Form1->Canvas->MoveTo(ICE_RINK_X_COORD, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT);
-	Form1->Canvas->LineTo(ICE_RINK_X_COORD + ICE_RINK_WIDTH, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT);
-	Form1->Canvas->MoveTo(ICE_RINK_X_COORD, ICE_RINK_Y_COORD);
-	Form1->Canvas->LineTo(ICE_RINK_X_COORD, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT);
-	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + ICE_RINK_WIDTH, ICE_RINK_Y_COORD);
-	Form1->Canvas->LineTo(ICE_RINK_X_COORD + ICE_RINK_WIDTH, ICE_RINK_Y_COORD + ICE_RINK_HEIGHT);
+	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + (ICE_RINK_WIDTH - 40)*SCALE, ICE_RINK_Y_COORD + (ICE_RINK_HEIGHT/2 - 20)*SCALE);
+	Form1->Canvas->LineTo(ICE_RINK_X_COORD + (ICE_RINK_WIDTH - 60)*SCALE, ICE_RINK_Y_COORD + (ICE_RINK_HEIGHT/2 - 20)*SCALE);
+	Form1->Canvas->MoveTo(ICE_RINK_X_COORD + (ICE_RINK_WIDTH - 40)*SCALE, ICE_RINK_Y_COORD + (ICE_RINK_HEIGHT/2 + 20)*SCALE);
+	Form1->Canvas->LineTo(ICE_RINK_X_COORD + (ICE_RINK_WIDTH - 60)*SCALE, ICE_RINK_Y_COORD + (ICE_RINK_HEIGHT/2 + 20)*SCALE);
 
 }
+
+
+void __fastcall TForm1::FormResize(TObject *Sender)
+{
+	int delta_width = Form1->ClientWidth - LAST_FORM_WIDTH;
+	int delta_height = Form1->ClientHeight - LAST_FORM_HEIGHT;
+	if (abs(delta_width) > abs(delta_height * FORM_SIZE_RATIO)){
+		Form1->ClientHeight = Form1->ClientWidth / FORM_SIZE_RATIO;
+	} else {
+		Form1->ClientWidth = Form1->ClientHeight * FORM_SIZE_RATIO;
+	}
+	LAST_FORM_WIDTH = Form1->ClientWidth;
+	LAST_FORM_HEIGHT = Form1->ClientHeight;
+	SCALE = Form1->ClientWidth / INIT_FORM_WIDTH;
+	PIXEL_METRE_RATIO = SCALE * INIT_PIXEL_METRE_RATIO;
+    Form1->Invalidate();
+	render();
+
+}
+//---------------------------------------------------------------------------
 
